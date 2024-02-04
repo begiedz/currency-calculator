@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 export const Styles = StyleSheet.create({
   header: {
     color: 'white',
-    // fontFamily: 'monospace'
     alignSelf: 'flex-start'
 
   },
@@ -11,12 +10,27 @@ export const Styles = StyleSheet.create({
     gap: 20,
     alignItems: 'center',
     color: 'white',
-    // justifyContent: 'center',
   },
   getRate: {
-    backgroundColor: 'lightblue',
-    borderRadius: 5,
-    padding: 10,
+    position: "absolute",
+    bottom: 0,
+    left: 24,
+    color: 'white'
+  },
+  getRateButton: {
+    color: 'white',
+    fontSize: 32,
+  },
+  rate: {
+    alignItems: 'center',
+    position: "absolute",
+    bottom: 0,
+  },
+  rateAmmount: {
+    color: "#888"
+  },
+  rateDate: {
+    color: 'limegreen'
   },
   backGround: {
     backgroundColor: 'black',
@@ -24,15 +38,15 @@ export const Styles = StyleSheet.create({
     flex: 1,
   },
 
-
+  // buttons
   button: {
     width: 72,
     height: 72,
     borderRadius: 24,
-    backgroundColor: 'lightgray',
+    backgroundColor: '#333',
+
     justifyContent: 'center',
     alignItems: 'center',
-    // margin: 8,
   },
   buttonPrimary: {
     width: 72,
@@ -41,46 +55,49 @@ export const Styles = StyleSheet.create({
     backgroundColor: 'orange',
     justifyContent: 'center',
     alignItems: 'center',
-    // margin: 8,
   },
   buttonSecondary: {
     width: 72,
     height: 72,
     borderRadius: 24,
-    backgroundColor: 'gray',
+    backgroundColor: 'darkgray',
     justifyContent: 'center',
     alignItems: 'center',
-    // margin: 8,
   },
-  smallTextDark: {
-    fontSize: 32,
+  buttonTextDark: {
+    fontSize: 36,
     color: 'black'
   },
-  smallTextLigth: {
-    fontSize: 32,
+  buttonTextLight: {
+    fontSize: 36,
     color: 'white'
   },
 
   //numpad
   numpad: {
-    gap: 4
+    width: "100%",
+    alignItems: 'center',
+    gap: 16,
+    position: 'absolute',
+    bottom: 50,
   },
   row: {
     maxWidth: '100%',
     flexDirection: 'row',
-    gap: 4
+    gap: 16,
   },
+  //display
   displayPrimaryNumber: {
-    fontSize: 96,
-    color: 'gray',
+    fontSize: 64,
+    color: 'white',
+    backgroundColor: 'gray',
     alignSelf: "flex-end",
     fontWeight: '200'
   },
   displaySecondaryNumber: {
-    fontSize: 40,
+    fontSize: 64,
     color: 'gray',
     alignSelf: "flex-end",
     fontWeight: '200'
   },
-
 });

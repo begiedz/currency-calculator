@@ -29,6 +29,10 @@ export default function App() {
     }
   };
 
+  const currentDate = new Date()
+  const dateDisplay = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}, ${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}`
+
+
   return (
     <SafeAreaView style={Styles.backGround}>
       {/* <ScrollView> */}
@@ -36,16 +40,19 @@ export default function App() {
         <Text style={Styles.header}>Currency calculator v0.1</Text>
       </View>
       <View style={Styles.container}>
-
-
         <TouchableOpacity style={Styles.getRate} onPress={() => handlePress("EUR", "PLN")}>
-          <Text>getRates</Text>
+          <Text style={Styles.getRateButton}>↺</Text>
         </TouchableOpacity>
 
         <Numpad />
 
-        {!!rate && <Text>1 {baseCode} = {rate} {targetCode}</Text>}
-        <StatusBar style="auto" />
+        {!!rate &&
+          <View style={Styles.rate}>
+            <Text style={Styles.rateDate}>{dateDisplay}</Text>
+            <Text style={Styles.rateAmmount}>1 {baseCode} = {rate} {targetCode}</Text>
+          </View>}
+
+        <StatusBar style="light" />
       </View>
       {/* </ScrollView> */}
     </SafeAreaView>
