@@ -1,12 +1,11 @@
-// currency1 = 'EUR'
-// currency2 = 'PLN'
-
 const getRate = async (baseCode: string, targetCode: string) => {
   const apiUrl: string = `https://v6.exchangerate-api.com/v6/${process.env.EXPO_PUBLIC_API_KEY}/pair/${baseCode}/${targetCode}`;
 
   const response = await fetch(apiUrl);
   const json = await response.json();
-  const rate: number = json.conversion_rate;
+
+  // conversion rate rounded to 2 decimal places
+  const rate: number = Math.round(json.conversion_rate * 100) / 100;
 
   console.log(json);
   console.log(rate);

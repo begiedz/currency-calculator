@@ -1,7 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useState } from 'react';
+
 import getRate from './api';
+import Numpad from './components/Numpad';
+import { Styles } from './styles/Styles';
 
 
 export default function App() {
@@ -27,29 +30,25 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-
-      <View style={{}}>
-        <Text>Currency calculator</Text>
+    <SafeAreaView style={Styles.backGround}>
+      {/* <ScrollView> */}
+      <View>
+        <Text style={Styles.header}>Currency calculator v0.1</Text>
       </View>
+      <View style={Styles.container}>
 
-      {/* <Pressable onPress={() => getRate('EUR', 'PLN')}> */}
-      <Pressable onPress={() => handlePress("EUR", "PLN")}>
-        <Text>getRates</Text>
-      </Pressable>
-      {!!rate && <Text>1 {baseCode} = {rate} {targetCode}</Text>}
-      <StatusBar style="auto" />
 
-    </View>
+        <TouchableOpacity style={Styles.getRate} onPress={() => handlePress("EUR", "PLN")}>
+          <Text>getRates</Text>
+        </TouchableOpacity>
+
+        <Numpad />
+
+        {!!rate && <Text>1 {baseCode} = {rate} {targetCode}</Text>}
+        <StatusBar style="auto" />
+      </View>
+      {/* </ScrollView> */}
+    </SafeAreaView>
+
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    gap: 20,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    // justifyContent: 'center',
-  },
-});
