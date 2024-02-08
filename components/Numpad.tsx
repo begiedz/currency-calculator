@@ -1,30 +1,24 @@
 import React from 'react'
-import { Text, View, StyleSheet, Pressable, TouchableOpacity, Dimensions } from 'react-native'
+import { Text, View } from 'react-native'
 import Button from './Button';
 import { Styles } from '../styles/Styles'
 
-const Numpad = () => {
-
-  const [primaryNumber, setPrimaryNumber] = React.useState('')
-  const [secondaryNumber, setSecondaryNumber] = React.useState('')
-  const [operation, setOperation] = React.useState('')
-  const [result, setResult] = React.useState<Number | null>(null)
+interface NumpadProps {
+  baseNumber: any, setBaseNumber: any
+}
+const Numpad = ({ baseNumber, setBaseNumber }: NumpadProps) => {
 
   const handleNumberPress = (buttonValue: string) => {
-    if (primaryNumber.length < 10) {
-      setPrimaryNumber(primaryNumber + buttonValue)
+    if (baseNumber.length < 10) {
+      setBaseNumber(baseNumber + buttonValue)
     }
   }
   const clear = () => {
-    setPrimaryNumber('');
-  }
-  const primaryNumberDisplay = () => {
-    return <Text style={Styles.displayPrimaryNumber}>{primaryNumber}</Text>
+    setBaseNumber('');
   }
 
   return (
     <View style={Styles.numpad}>
-      {primaryNumberDisplay()}
       <View style={Styles.row}>
         <Button title='C' isSecondary isDarkText onPress={() => clear()} />
         <Button title='⇅' isSecondary isDarkText onPress={() => alert('Implementing functionality')} />

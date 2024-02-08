@@ -1,6 +1,5 @@
-import { TouchableOpacity, Text } from "react-native";
-import { Styles } from "../styles/Styles"
-import { useState } from "react";
+import { TouchableOpacity, Text, TouchableHighlight } from "react-native";
+import { Styles } from "../styles/Styles";
 
 interface ButtonProps {
   title: string;
