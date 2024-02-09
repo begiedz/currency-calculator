@@ -10,31 +10,43 @@ export const Styles = StyleSheet.create({
   backGround: {
     height: '100%',
     backgroundColor: 'black',
-    // color: 'white',
     display: 'flex',
     justifyContent: 'flex-end'
   },
 
   //display
-  displayBaseNumber: {
+  display: {
+
+  },
+
+  baseNumberWrapper: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
+    backgroundColor: '#222',
+  },
+  baseNumberDisplay: {
     fontSize: 64,
     height: 80,
     color: 'white',
-    backgroundColor: '#222',
     fontWeight: '200',
     width: '100%',
-    alignSelf: "flex-end",
-    // borderBottomWidth: 1,
-    borderBottomColor: 'gray'
   },
-  displayTargetNumber: {
+  baseCode: {
+    color: 'white'
+  },
+  targetNumberWrapper: {
+    backgroundColor: '#222',
+  },
+  targetNumberDisplay: {
     fontSize: 64,
     height: 80,
     color: 'gray',
-    backgroundColor: '#222',
     fontWeight: '200',
     width: '100%',
     alignSelf: "flex-end",
+  },
+  targetCode: {
+    color: 'white'
   },
 
   //numpad

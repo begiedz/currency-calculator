@@ -7,16 +7,30 @@ import { Styles } from '../styles/Styles'
 interface displayInterface {
   baseCode: string,
   targetCode: string,
+
   setBaseCode: any,
-  setTargetCode: any
-  baseNumber: string;
+  setTargetCode: any,
+
+  baseNumber: number | string,
+  targetNumber: number | string,
 }
 
-const Display = ({ baseCode, targetCode, setBaseCode, setTargetCode, baseNumber }: displayInterface) => {
+const Display = ({ baseCode, targetCode, setBaseCode, setTargetCode, baseNumber, targetNumber }: displayInterface) => {
+
   return (
-    <View>
-      <Text style={Styles.displayBaseNumber}>{baseNumber}</Text>
-      <Text style={Styles.displayTargetNumber}>{baseNumber}</Text>
+    <View style={Styles.display}>
+
+      <View style={Styles.baseNumberWrapper}>
+        <Text style={Styles.baseCode}>{baseCode}</Text>
+        <Text style={Styles.baseNumberDisplay}>{baseNumber}</Text>
+      </View>
+
+
+      <View style={Styles.targetNumberWrapper}>
+        <Text style={Styles.baseCode}>{targetCode}</Text>
+        <Text style={Styles.targetNumberDisplay}>{targetNumber}</Text>
+      </View>
+
       {/* <Picker
         style={{ height: 50, width: 150, backgroundColor: 'white', display: 'none' }}
         selectedValue={baseCode}

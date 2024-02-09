@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, Text, View } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import getRate from './api';
 import Numpad from './components/Numpad';
@@ -18,7 +18,13 @@ export default function App() {
   const [targetCode, setTargetCode] = useState<string>('')
 
   // baseNumber is set at Numpad and directed to Display Component
-  const [baseNumber, setBaseNumber] = useState('')
+  const [baseNumber, setBaseNumber] = useState<any>('')
+  const [targetNumber, setTargetNumber] = useState<any>('')
+
+  useEffect(() => {
+    setTargetNumber(Math.round(baseNumber * rate * 100) / 100)
+  }, [baseNumber, rate])
+
 
   return (
     <>
@@ -33,9 +39,11 @@ export default function App() {
         <Display
           baseCode={baseCode}
           targetCode={targetCode}
+          targetNumber={targetNumber}
           setBaseCode={setBaseCode}
           setTargetCode={setTargetCode}
-          baseNumber={baseNumber} />
+          baseNumber={baseNumber}
+        />
         <Numpad
           baseNumber={baseNumber}
           setBaseNumber={setBaseNumber} />
