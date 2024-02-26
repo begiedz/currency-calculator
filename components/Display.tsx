@@ -3,6 +3,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { useState } from 'react'
 import { Styles } from '../styles/Styles'
+import getRate from '../api'
 
 interface displayInterface {
   baseCode: string,
@@ -21,13 +22,13 @@ const Display = ({ baseCode, targetCode, setBaseCode, setTargetCode, baseNumber,
     <View style={Styles.display}>
 
       <View style={Styles.baseNumberWrapper}>
-        <Text style={Styles.baseCode}>{baseCode}</Text>
+        <Text style={Styles.baseCode}>{baseCode == '' ? 'Base Currency' : baseCode}</Text>
         <Text style={Styles.baseNumberDisplay}>{baseNumber}</Text>
       </View>
 
 
       <View style={Styles.targetNumberWrapper}>
-        <Text style={Styles.baseCode}>{targetCode}</Text>
+        <Text style={Styles.baseCode}>{targetCode == '' ? 'Target Currency' : targetCode}</Text>
         <Text style={Styles.targetNumberDisplay}>{targetNumber}</Text>
       </View>
 

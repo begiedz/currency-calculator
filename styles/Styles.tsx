@@ -9,14 +9,17 @@ export const Styles = StyleSheet.create({
   },
   backGround: {
     height: '100%',
+    width: '100%',
+    maxWidth: 500,
     backgroundColor: 'black',
     display: 'flex',
-    justifyContent: 'flex-end'
+    alignItems: 'center',
+    // justifyContent: 'flex-end'
   },
 
   //display
   display: {
-
+    width: '100%',
   },
 
   baseNumberWrapper: {
@@ -52,9 +55,11 @@ export const Styles = StyleSheet.create({
   //numpad
   numpad: {
     width: "100%",
+    display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: 16,
-    marginVertical: 16,
+    margin: 16,
   },
   row: {
     maxWidth: '100%',

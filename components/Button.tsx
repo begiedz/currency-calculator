@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text, TouchableHighlight } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import { Styles } from "../styles/Styles";
 
 interface ButtonProps {

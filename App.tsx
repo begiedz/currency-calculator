@@ -18,8 +18,8 @@ export default function App() {
   const [targetCode, setTargetCode] = useState<string>('')
 
   // baseNumber is set at Numpad and directed to Display Component
-  const [baseNumber, setBaseNumber] = useState<any>('')
-  const [targetNumber, setTargetNumber] = useState<any>('')
+  const [baseNumber, setBaseNumber] = useState<number>(0)
+  const [targetNumber, setTargetNumber] = useState<number>(0)
 
   useEffect(() => {
     setTargetNumber(Math.round(baseNumber * rate * 100) / 100)
@@ -28,13 +28,9 @@ export default function App() {
 
   return (
     <>
-      <View>
-        <Text style={Styles.header}>Currency calculator v0.1</Text>
-      </View>
-
       <SafeAreaView style={Styles.backGround}>
-        <StatusBar style="light" />
 
+        <StatusBar style="light" />
 
         <Display
           baseCode={baseCode}

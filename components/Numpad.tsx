@@ -9,18 +9,32 @@ interface NumpadProps {
 const Numpad = ({ baseNumber, setBaseNumber }: NumpadProps) => {
 
   const handleNumberPress = (buttonValue: string) => {
-    if (baseNumber.length < 10) {
+    if (baseNumber == 0) {
+      setBaseNumber(buttonValue)
+    }
+    else if (baseNumber.length < 10) {
       setBaseNumber(baseNumber + buttonValue)
     }
   }
-  const clear = () => {
-    setBaseNumber('');
+
+  const handleClear = () => {
+    setBaseNumber(0);
+  }
+  const handleBackspace = () => {
+    if (baseNumber == 0) {
+      //do nothing
+    }
+    else if (baseNumber.length < 2) {
+      setBaseNumber(0)
+    }
+    else
+      setBaseNumber(baseNumber.slice(0, -1))
   }
 
   return (
     <View style={Styles.numpad}>
       <View style={Styles.row}>
-        <Button title='C' isSecondary isDarkText onPress={() => clear()} />
+        <Button title='C' isSecondary isDarkText onPress={() => handleClear()} />
         <Button title='⇅' isSecondary isDarkText onPress={() => alert('Implementing functionality')} />
         <Button title='%' isSecondary isDarkText onPress={() => alert('Implementing functionality')} />
         <Button title='÷' isPrimary onPress={() => alert('Implementing functionality')} />
@@ -50,7 +64,7 @@ const Numpad = ({ baseNumber, setBaseNumber }: NumpadProps) => {
       <View style={Styles.row}>
         <Button title='0' onPress={() => handleNumberPress('0')} />
         <Button title=',' onPress={() => alert('Implementing functionality')} />
-        <Button title='⌫' onPress={() => alert('Implementing functionality')} />
+        <Button title='⌫' onPress={() => handleBackspace()} />
         <Button title='=' isPrimary onPress={() => alert('Implementing functionality')} />
       </View>
     </View>
