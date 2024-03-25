@@ -4,9 +4,15 @@ import Button from './Button';
 import { Styles } from '../styles/Styles'
 
 interface NumpadProps {
-  baseNumber: any, setBaseNumber: any
+  baseNumber: any,
+  setBaseNumber: any,
+  operation: string,
+  setOperation: string,
+  operationNumber: number,
+  setOperationNumber: number,
 }
-const Numpad = ({ baseNumber, setBaseNumber }: NumpadProps) => {
+
+const Numpad = ({ baseNumber, setBaseNumber, operation, setOperation, operationNumber, setOperationNumber }: NumpadProps) => {
 
   const handleNumberPress = (buttonValue: string) => {
     if (baseNumber == 0) {
@@ -20,6 +26,7 @@ const Numpad = ({ baseNumber, setBaseNumber }: NumpadProps) => {
   const handleClear = () => {
     setBaseNumber(0);
   }
+
   const handleBackspace = () => {
     if (baseNumber == 0) {
       //do nothing
@@ -29,6 +36,26 @@ const Numpad = ({ baseNumber, setBaseNumber }: NumpadProps) => {
     }
     else
       setBaseNumber(baseNumber.slice(0, -1))
+  }
+
+  const getResult = () => {
+    switch (operation) {
+      case "+":
+        setBaseNumber(parseInt(baseNumber) + operationNumber)
+        break
+      case "-":
+        setBaseNumber(parseInt(baseNumber) - operationNumber)
+        break
+      case "*":
+        setBaseNumber(parseInt(baseNumber) * operationNumber)
+        break
+      case "/":
+        setBaseNumber(parseInt(baseNumber) / operationNumber)
+        break
+      case "%":
+        setBaseNumber(parseInt(baseNumber) * 0.01)
+        break
+    }
   }
 
   return (

@@ -17,9 +17,14 @@ export default function App() {
   const [baseCode, setBaseCode] = useState<string>('')
   const [targetCode, setTargetCode] = useState<string>('')
 
-  // baseNumber is set at Numpad and directed to Display Component
+  // baseNumber is set in Numpad and directed to Display Component
   const [baseNumber, setBaseNumber] = useState<number>(0)
   const [targetNumber, setTargetNumber] = useState<number>(0)
+
+  const [operationNumber, setOperationNumber] = useState<number>(0)
+
+  // operation is set in Numpad
+  const [operation, setOperation] = useState<string>('')
 
   useEffect(() => {
     setTargetNumber(Math.round(baseNumber * rate * 100) / 100)
@@ -40,9 +45,16 @@ export default function App() {
           setTargetCode={setTargetCode}
           baseNumber={baseNumber}
         />
+
         <Numpad
           baseNumber={baseNumber}
-          setBaseNumber={setBaseNumber} />
+          setBaseNumber={setBaseNumber}
+          operation={operation}
+          setOperation={setOperation}
+          operationNumber={operationNumber}
+          setOperationNumber={setOperationNumber}
+        />
+
         <RateView
           rate={rate}
           setRate={setRate}
@@ -50,7 +62,8 @@ export default function App() {
           baseCode={baseCode}
           setBaseCode={setBaseCode}
           targetCode={targetCode}
-          setTargetCode={setTargetCode} />
+          setTargetCode={setTargetCode}
+        />
 
       </SafeAreaView>
     </>

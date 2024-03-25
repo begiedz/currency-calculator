@@ -105,11 +105,9 @@ export const Styles = StyleSheet.create({
   //rate
   rateView: {
     display: 'flex',
-    // flex: 1,
     flexDirection: 'row',
     width: '100%',
-    // height: 'auto',
-    alignItems: 'stretch'
+    // alignItems: 'stretch'
   },
   getRateButtonWrapper: {
     gap: 20,
