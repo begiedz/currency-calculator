@@ -5,8 +5,8 @@ export const Styles = StyleSheet.create({
     top: 0,
     left: 0,
     color: 'white',
-
   },
+
   backGround: {
     height: '100%',
     width: '100%',
@@ -24,29 +24,35 @@ export const Styles = StyleSheet.create({
   baseNumberWrapper: {
     borderBottomWidth: 1,
     borderBottomColor: 'gray',
-    backgroundColor: '#222',
+    padding: 10,
+    paddingBottom: 0
   },
+
   baseNumberDisplay: {
-    fontSize: 64,
     height: 80,
-    color: 'white',
-    fontWeight: '200',
     width: '100%',
+    color: 'white',
+    fontSize: 72,
+    fontWeight: '200',
   },
+
   baseCode: {
     color: 'white'
   },
+
   targetNumberWrapper: {
-    backgroundColor: '#222',
+    padding: 10,
+    paddingBottom: 0
   },
+
   targetNumberDisplay: {
-    fontSize: 64,
     height: 80,
-    color: 'gray',
-    fontWeight: '200',
     width: '100%',
-    alignSelf: "flex-end",
+    color: 'gray',
+    fontSize: 72,
+    fontWeight: '200',
   },
+
   targetCode: {
     color: 'white'
   },
@@ -60,6 +66,7 @@ export const Styles = StyleSheet.create({
     gap: 16,
     margin: 16,
   },
+
   row: {
     maxWidth: '100%',
     flexDirection: 'row',
@@ -72,10 +79,10 @@ export const Styles = StyleSheet.create({
     height: 72,
     borderRadius: 24,
     backgroundColor: '#333',
-
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   buttonPrimary: {
     width: 72,
     height: 72,
@@ -84,6 +91,7 @@ export const Styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   buttonSecondary: {
     width: 72,
     height: 72,
@@ -92,10 +100,12 @@ export const Styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   buttonTextDark: {
     fontSize: 36,
     color: 'black'
   },
+
   buttonTextLight: {
     fontSize: 36,
     color: 'white'
@@ -104,24 +114,28 @@ export const Styles = StyleSheet.create({
   //rate
   rateView: {
     position: 'relative',
-
     width: '100%',
   },
+
   getRate: {
     position: 'absolute',
     left: '5%'
   },
+
   getRateButton: {
     color: 'white',
     fontSize: 32,
   },
+
   rate: {
     position: 'absolute',
     alignSelf: 'center',
   },
+
   rateAmmount: {
     color: "#888"
   },
+
   rateDate: {
     color: 'limegreen'
   },
