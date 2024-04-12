@@ -14,7 +14,6 @@ export const Styles = StyleSheet.create({
     backgroundColor: 'black',
     display: 'flex',
     alignItems: 'center',
-    // justifyContent: 'flex-end'
   },
 
   //display
@@ -77,7 +76,6 @@ export const Styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   buttonPrimary: {
     width: 72,
     height: 72,
@@ -102,26 +100,24 @@ export const Styles = StyleSheet.create({
     fontSize: 36,
     color: 'white'
   },
+
   //rate
   rateView: {
-    display: 'flex',
-    flexDirection: 'row',
+    position: 'relative',
+
     width: '100%',
-    // alignItems: 'stretch'
-  },
-  getRateButtonWrapper: {
-    gap: 20,
-    alignItems: 'center',
-    color: 'white',
   },
   getRate: {
+    position: 'absolute',
+    left: '5%'
   },
   getRateButton: {
     color: 'white',
     fontSize: 32,
   },
   rate: {
-
+    position: 'absolute',
+    alignSelf: 'center',
   },
   rateAmmount: {
     color: "#888"
@@ -129,5 +125,4 @@ export const Styles = StyleSheet.create({
   rateDate: {
     color: 'limegreen'
   },
-
 });

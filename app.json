@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "58723d1c-7647-4d28-818f-48420aadbfa9"
+      }
+    },
+    "owner": "begiedz"
   }
 }
