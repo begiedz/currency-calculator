@@ -1,22 +1,35 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { View } from 'react-native'
 import Button from './Button';
+import { useAppContext } from '../Context';
+
 import { Styles } from '../styles/Styles'
 
-interface NumpadProps {
-  baseNumber: any,
-  targerNumber: any,
-  setBaseNumber: any,
-  operation: string,
-  setOperation: string,
-  operationNumber: number,
-  setOperationNumber: number,
-}
+const Numpad = () => {
 
-const Numpad = ({ baseNumber, targetNumber, setBaseNumber, operation, setOperation, operationNumber, setOperationNumber }: NumpadProps) => {
+  const context = useAppContext();
+
+  if (!context) {
+    return null;
+  }
+
+  const {
+    baseNumber,
+    setBaseNumber,
+    operation,
+    setOperation,
+    operationNumber,
+    setOperationNumber,
+    targetNumber,
+    setTargetNumber,
+    targetCode,
+    setTargetCode,
+    baseCode,
+    setBaseCode
+  } = context;
 
   const handleNumberPress = (buttonValue: string) => {
-    if (baseNumber == 0) {
+    if (baseNumber === '0') {
       setBaseNumber(buttonValue)
     }
     else if (baseNumber.length < 10) {
@@ -25,49 +38,35 @@ const Numpad = ({ baseNumber, targetNumber, setBaseNumber, operation, setOperati
   }
 
   const handleClear = () => {
-    setBaseNumber(0);
+    setBaseNumber('0');
   }
 
   const handleBackspace = () => {
-    if (baseNumber == 0) {
+    if (baseNumber === '0') {
       //do nothing
     }
     else if (baseNumber.length < 2) {
-      setBaseNumber(0)
+      setBaseNumber('0')
     }
     else
       setBaseNumber(baseNumber.slice(0, -1))
   }
 
   const getResult = () => {
-    switch (operation) {
-      case "+":
-        setBaseNumber(parseInt(operationNumber) + parseInt(baseNumber))
-        break
-      case "-":
-        setBaseNumber(parseInt(operationNumber) - parseInt(baseNumber))
-        break
-      case "*":
-        setBaseNumber(parseInt(operationNumber) * parseInt(baseNumber))
-        break
-      case "/":
-        setBaseNumber(parseInt(operationNumber) / parseInt(baseNumber))
-        break
-      case "%":
-        setBaseNumber(parseInt(baseNumber) * 0.01)
-        break
-    }
-  }
+    const result =
+      operation === '+' ? parseFloat(operationNumber) + parseFloat(baseNumber) :
+        operation === '-' ? parseFloat(operationNumber) - parseFloat(baseNumber) :
+          operation === '*' ? parseFloat(operationNumber) * parseFloat(baseNumber) :
+            operation === '/' ? parseFloat(operationNumber) / parseFloat(baseNumber) :
+              operation === '%' ? parseFloat(baseNumber) * 0.01 : 0;
+    setBaseNumber(result.toString());
+  };
 
   const handleOperation = (buttonValue: string) => {
     setOperation(buttonValue)
     setOperationNumber(baseNumber)
     setBaseNumber('')
   }
-
-  // const handleSwitch = () => {
-  //   setBaseNumber(targetNumber)
-  // }
 
   return (
     <View style={Styles.numpad}>

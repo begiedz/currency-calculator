@@ -1,22 +1,21 @@
-import { Picker } from '@react-native-picker/picker'
 import React from 'react'
 import { View, Text } from 'react-native'
-import { useState } from 'react'
 import { Styles } from '../styles/Styles'
-import getRate from '../api'
+import { useAppContext } from '../Context'
 
-interface displayInterface {
-  baseCode: string,
-  targetCode: string,
+const Display = () => {
+  const context = useAppContext();
 
-  setBaseCode: any,
-  setTargetCode: any,
+  if (!context) {
+    return null;
+  }
 
-  baseNumber: number | string,
-  targetNumber: number | string,
-}
-
-const Display = ({ baseCode, targetCode, setBaseCode, setTargetCode, baseNumber, targetNumber }: displayInterface) => {
+  const {
+    baseCode,
+    targetCode,
+    baseNumber,
+    targetNumber,
+  } = context;
 
   return (
     <View style={Styles.display}>

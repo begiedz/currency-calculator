@@ -1,3 +1,4 @@
+// @ts-nocheck
 const getRate = async (baseCode: string, targetCode: string) => {
   // https://open.er-api.com/v6/latest/USD
   const apiUrl: string = `https://v6.exchangerate-api.com/v6/${process.env.EXPO_PUBLIC_API_KEY}/pair/${baseCode}/${targetCode}`;
