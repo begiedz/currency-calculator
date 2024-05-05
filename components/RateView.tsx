@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { Styles } from '../styles/Styles'
 import { useAppContext } from '../Context'
@@ -11,19 +11,22 @@ const RateView: React.FC = () => {
   if (!context) {
     return null;
   }
-  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode } = context;
+  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, } = context;
 
-
-  const currentDate = new Date()
-  const dateDisplay = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}, ${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}`
+  const [formattedTime, setFormattedTime] = useState<string>('')
+  const [formattedDate, setFormattedDate] = useState<string>('')
 
   const handlePress = async (baseCode: string, targetCode: string) => {
     try {
-      const fetchedRate: number = await getRate(baseCode, targetCode);
-      setRate(fetchedRate);
+      const { rate, formattedTime, formattedDate } = await getRate(baseCode, targetCode);
+      setRate(rate);
 
-      setTargetCode(targetCode)
-      setBaseCode(baseCode)
+      setTargetCode(targetCode);
+      setBaseCode(baseCode);
+
+      setFormattedTime(formattedTime);
+      setFormattedDate(formattedDate);
+
 
     } catch (err: unknown) {
       console.error(err);
@@ -37,7 +40,7 @@ const RateView: React.FC = () => {
       </TouchableOpacity>
       {!!rate &&
         <View style={Styles.rate}>
-          <Text style={Styles.rateDate}>{dateDisplay}</Text>
+          <Text style={Styles.rateDate}>{formattedDate}, {formattedTime}</Text>
           <Text style={Styles.rateAmmount}>1 {baseCode} = {rate} {targetCode}</Text>
         </View>
       }
