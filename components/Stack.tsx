@@ -1,18 +1,15 @@
-
-import { NavigationContainer, DarkTheme } from '@react-navigation/native';
+import React from 'react'
+import { SafeAreaView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { useNavigation, NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import Numpad from './Numpad';
 import Display from './Display';
 import RateView from './RateView';
 import CurrencySelect from './CurrencySelect';
-import { SafeAreaView } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { useNavigation } from '@react-navigation/native';
-
 import { Styles } from '../styles/Styles';
 
-import React from 'react'
 
 const Calculator = () => {
   const navigation = useNavigation();
@@ -36,7 +33,7 @@ const Stack = () => {
         <Stack.Screen name='Calculator'
           component={Calculator}
           options={{ headerShown: false }} />
-        <Stack.Screen name='Select Currency' component={CurrencySelect} />
+        <Stack.Screen name='Currencies' component={CurrencySelect} />
       </Stack.Navigator>
     </NavigationContainer>
   )

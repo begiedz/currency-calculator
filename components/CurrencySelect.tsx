@@ -1,48 +1,44 @@
-import { SafeAreaView, Text, View } from 'react-native'
 import React from 'react'
-import { Styles } from '../styles/Styles'
+import { SafeAreaView, Text, View } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
-import { useAppContext } from '../Context'
 
-const CurrencySelect = () => {
+import { useAppContext } from '../Context'
+import { supportedCurrencies } from '../data/supportedCurrencies'
+import { Styles } from '../styles/Styles'
+
+const CurrencySelect = ({ route }: any) => {
+
+  const { changeTargetCode } = route.params
+
   const context = useAppContext();
   if (!context) {
     return null;
   }
-  const { baseCode, setBaseCode } = context;
+  const { baseCode, targetCode, setBaseCode, setTargetCode } = context;
 
   return (
+
     <SafeAreaView style={Styles.backGround}>
       <View>
-        <Text style={{ color: "white" }}>Currency Selection is in progress...</Text>
+        <Text style={{ color: "white" }}>Currency Selector is in progress...</Text>
       </View>
 
       <View style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        width: '100%'
       }}>
         <Picker
           itemStyle={{ color: 'white' }}
-          style={{ height: 150, width: 150, /* backgroundColor: 'white', */ }}
-          selectedValue={baseCode}
-          onValueChange={(itemValue) => setBaseCode(itemValue)}>
+          style={{ flex: 1, height: "auto" }}
+          selectedValue={changeTargetCode ? targetCode : baseCode}
+          onValueChange={(itemValue) => changeTargetCode ? setTargetCode(itemValue) : setBaseCode(itemValue)}>
 
-          <Picker.Item label='🇵🇱 PLN' value='PLN' />
-          <Picker.Item label='🇪🇺 EUR' value='EUR' />
-          <Picker.Item label='🇺🇸 USD' value='USD' />
+          {supportedCurrencies.map((currency, index) => (
+            <Picker.Item key={index} label={currency.name} value={currency.code} />
+          ))}
         </Picker>
       </View>
+    </SafeAreaView >
 
-      {/* <Picker selectedValue={targetCode}
-        style={{ height: 50, width: 150, backgroundColor: 'white', display: 'none' }}
-        onValueChange={(itemValue) => setTargetCode(itemValue)}>
-        <Picker.Item label='🇪🇺 EUR' value='EUR'></Picker.Item>
-        <Picker.Item label='🇵🇱 PLN' value='PLN'></Picker.Item>
-        <Picker.Item label='🇺🇸 USD' value='USD'></Picker.Item>
-      </Picker> */}
-
-    </SafeAreaView>
   )
 }
 

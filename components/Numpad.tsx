@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View } from 'react-native'
-import Button from './Button';
-import { useAppContext } from '../Context';
 
+import { useAppContext } from '../Context';
+import Button from './Button';
 import { Styles } from '../styles/Styles'
 
 const Numpad = () => {
