@@ -10,11 +10,8 @@ const CurrencySelect = ({ route }: any) => {
 
   const { changeTargetCode } = route.params
 
-  const context = useAppContext();
-  if (!context) {
-    return null;
-  }
-  const { baseCode, targetCode, setBaseCode, setTargetCode } = context;
+
+  const { baseCode, targetCode, setBaseCode, setTargetCode } = useAppContext();
 
   return (
 

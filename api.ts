@@ -1,7 +1,5 @@
 // @ts-nocheck
-
 export const callApi = async (baseCode: string) => {
-  // callApi
   const response = await fetch(`https://open.er-api.com/v6/latest/${baseCode}`);
   const json = await response.json();
   console.log(json);

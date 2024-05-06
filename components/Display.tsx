@@ -6,16 +6,8 @@ import { Styles } from '../styles/Styles'
 
 const Display = ({ navigation }: any) => {
 
-  const context = useAppContext();
-  if (!context) {
-    return null;
-  }
-  const {
-    baseCode,
-    targetCode,
-    baseNumber,
-    targetNumber,
-  } = context;
+
+  const { baseCode, targetCode, baseNumber, targetNumber } = useAppContext();
 
   return (
     <View style={Styles.display} >

@@ -7,11 +7,7 @@ import { callApi, getRate, getDate } from '../api'
 
 const RateView: React.FC = () => {
 
-  const context = useAppContext();
-  if (!context) {
-    return null;
-  }
-  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, } = context;
+  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, } = useAppContext();
 
   const [formattedTime, setFormattedTime] = useState<string>('')
   const [formattedDate, setFormattedDate] = useState<string>('')

@@ -18,7 +18,17 @@ interface AppContextProps {
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined)
-export const useAppContext = () => useContext(AppContext)
+
+export const useAppContext = (): any => {
+
+  const context = useContext(AppContext)
+
+  if (!context) {
+    return undefined;
+  }
+
+  return context
+}
 
 interface AppContextProviderProps {
   children: ReactNode;

@@ -7,12 +7,6 @@ import { Styles } from '../styles/Styles'
 
 const Numpad = () => {
 
-  const context = useAppContext();
-
-  if (!context) {
-    return null;
-  }
-
   const {
     baseNumber,
     setBaseNumber,
@@ -26,7 +20,7 @@ const Numpad = () => {
     setTargetCode,
     baseCode,
     setBaseCode
-  } = context;
+  } = useAppContext();
 
   const handleNumberPress = (buttonValue: string) => {
     if (baseNumber === '0') {
