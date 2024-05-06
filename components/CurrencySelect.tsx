@@ -33,7 +33,7 @@ const CurrencySelect = ({ route }: any) => {
           onValueChange={(itemValue) => changeTargetCode ? setTargetCode(itemValue) : setBaseCode(itemValue)}>
 
           {supportedCurrencies.map((currency, index) => (
-            <Picker.Item key={index} label={currency.name} value={currency.code} />
+            <Picker.Item key={index} label={`${currency.flag} ${currency.name}`} value={currency.code} />
           ))}
         </Picker>
       </View>
