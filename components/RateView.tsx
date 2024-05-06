@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { Styles } from '../styles/Styles'
 import { useAppContext } from '../Context'
-import getRate from '../api'
+import { callApi, getRate, getDate } from '../api'
 
 
 const RateView: React.FC = () => {
@@ -18,16 +18,15 @@ const RateView: React.FC = () => {
 
   const handlePress = async (baseCode: string, targetCode: string) => {
     try {
-      const { rate, formattedTime, formattedDate } = await getRate(baseCode, targetCode);
-      setRate(rate);
+      const response = await callApi(baseCode)
+      const apiRate: number = getRate(response, targetCode)
+      const { formattedDate, formattedTime } = getDate(response)
 
-      setTargetCode(targetCode);
-      setBaseCode(baseCode);
-
-      setFormattedTime(formattedTime);
-      setFormattedDate(formattedDate);
-
-
+      setRate(apiRate)
+      setBaseCode(baseCode)
+      setTargetCode(targetCode)
+      setFormattedTime(formattedTime)
+      setFormattedDate(formattedDate)
     } catch (err: unknown) {
       console.error(err);
     }
