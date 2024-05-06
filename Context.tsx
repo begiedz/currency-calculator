@@ -29,8 +29,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
   //rate is returned from exchange rate api
   const [rate, setRate] = useState<number>(0)
 
-  const [baseCode, setBaseCode] = useState<string>('')
-  const [targetCode, setTargetCode] = useState<string>('')
+  const [baseCode, setBaseCode] = useState<string>('EUR')
+  const [targetCode, setTargetCode] = useState<string>('PLN')
 
   // baseNumber is set in Numpad and directed to Display Component
   const [baseNumber, setBaseNumber] = useState<string>('0')

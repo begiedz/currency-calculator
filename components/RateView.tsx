@@ -34,7 +34,7 @@ const RateView: React.FC = () => {
 
   return (
     <View style={Styles.rateView}>
-      <TouchableOpacity style={Styles.getRate} onPress={() => handlePress("EUR", "PLN")}>
+      <TouchableOpacity style={Styles.getRate} onPress={() => handlePress(baseCode, targetCode)}>
         <Text style={Styles.getRateButton}>↺</Text>
       </TouchableOpacity>
       {!!rate &&

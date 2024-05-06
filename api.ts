@@ -34,7 +34,9 @@ export const getDate = (response) => {
     .padStart(2, '0')}/${year}`;
   const formattedTime: string = `${'0' + hours}:${'0' + minutes}`;
 
-  // console.log(date);
+  console.log(date);
+  console.log(hours);
+  console.log(minutes);
   console.log(formattedTime);
   console.log(formattedDate);
   return { formattedDate, formattedTime };
