@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { SafeAreaView, Text, TextInput, View, FlatList, Pressable, Animated, TouchableHighlight, Platform } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { SafeAreaView, Text, View, FlatList, TouchableHighlight, Platform } from 'react-native'
+import { SearchBar, color } from '@rneui/base'
 
 import { useAppContext } from '../Context'
 import { supportedCurrencies } from '../data/supportedCurrencies'
-import { Styles } from '../styles/Styles'
 import { useNavigation } from '@react-navigation/native'
-import { Icon, SearchBar } from '@rneui/base'
+import { Styles } from '../styles/Styles'
 
 const CurrencySelect = ({ route }: any) => {
   const navigation = useNavigation();
@@ -14,12 +14,23 @@ const CurrencySelect = ({ route }: any) => {
   const { baseCode, targetCode, setBaseCode, setTargetCode } = useAppContext();
 
   const [searchCode, setSearchCode] = useState('')
+  const [filteredCodes, setFilteredCodes] = useState<ListElementProps[]>(supportedCurrencies)
 
   interface ListElementProps {
     code: string
     name: string
     flag: string
   }
+
+  const handleSearch = (text: string) => {
+    setSearchCode(text)
+    const filteredCurrencies = supportedCurrencies.filter(currency =>
+      currency.name.toLowerCase().includes(text.toLowerCase()) ||
+      currency.code.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredCodes(filteredCurrencies)
+  }
+
 
   const ListElement = ({ code, name, flag }: ListElementProps) => {
     return (
@@ -54,19 +65,20 @@ const CurrencySelect = ({ route }: any) => {
 
       <SearchBar
         containerStyle={{ backgroundColor: 'transparent', width: '100%' }}
-        inputContainerStyle={{ backgroundColor: '#222', }}
+        inputContainerStyle={{ backgroundColor: '#222' }}
+        inputStyle={{ color: 'white' }}
+        onChangeText={handleSearch}
+        value={searchCode}
 
-        onChangeText={(event) => { console.log(event); }}
         placeholder={`Search ${changeTargetCode ? 'target' : 'base'} currency`}
         platform={Platform.OS === 'ios' || "deafult" ? 'ios' : 'android'}
         searchIcon={Platform.OS === 'ios' || "deafult" ? { name: 'search' } : { name: 'magnify', type: 'material-community' }}
         clearIcon={Platform.OS === 'ios' || "deafult" ? { name: 'close-circle' } : { name: 'close-circle', type: 'material-community' }}
       />
-
       <FlatList
         showsVerticalScrollIndicator={true}
-        style={{ marginTop: 16, width: '100%' }}
-        data={supportedCurrencies}
+        style={{ width: '100%' }}
+        data={filteredCodes}
         renderItem={({ item }) => (
           <ListElement code={item.code} name={item.name} flag={item.flag} />)}
         ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
@@ -75,7 +87,5 @@ const CurrencySelect = ({ route }: any) => {
     </SafeAreaView >
   )
 }
-
-
 
 export default CurrencySelect
