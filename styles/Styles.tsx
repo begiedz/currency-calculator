@@ -19,13 +19,13 @@ export const Styles = StyleSheet.create({
   //display
   display: {
     width: '100%',
+    gap: 8
   },
 
   baseNumberWrapper: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'gray',
-    padding: 10,
-    paddingBottom: 0
+    paddingLeft: 10,
+    paddingRight: 10,
+    overflow: 'hidden'
   },
 
   baseNumberDisplay: {
@@ -41,8 +41,9 @@ export const Styles = StyleSheet.create({
   },
 
   targetNumberWrapper: {
-    padding: 10,
-    paddingBottom: 0
+    paddingLeft: 10,
+    paddingRight: 10,
+    overflow: 'hidden'
   },
 
   targetNumberDisplay: {

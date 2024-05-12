@@ -51,11 +51,6 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
   // operation is set in Numpad
   const [operation, setOperation] = useState<string>('')
 
-
-  useEffect(() => {
-    setTargetNumber((parseFloat(baseNumber) * rate).toFixed(2));
-  }, [baseNumber, rate])
-
   return (
     <AppContext.Provider value={{
       rate,
