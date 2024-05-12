@@ -11,7 +11,7 @@ const CurrencySelect = ({ route }: any) => {
   const navigation = useNavigation();
   const { changeTargetCode } = route.params
 
-  const { baseCode, targetCode, setBaseCode, setTargetCode } = useAppContext();
+  const { baseCode, targetCode, setBaseCode, setTargetCode, rate, setRate, responseRates } = useAppContext();
 
   const [searchCode, setSearchCode] = useState('')
   const [filteredCodes, setFilteredCodes] = useState<ListElementProps[]>(supportedCurrencies)
@@ -39,12 +39,16 @@ const CurrencySelect = ({ route }: any) => {
         style={{ alignItems: 'center', borderRadius: 12 }}
         onPress={() => {
           changeTargetCode ? setTargetCode(code) : setBaseCode(code);
+          changeTargetCode && setRate(parseFloat(responseRates[code]).toFixed(2))
+          console.log(responseRates);
+
           //@ts-ignore
           navigation.navigate('Calculator');
         }}>
         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '95%' }}>
 
           <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', }}>
+
             <View>
               <Text style={{ color: 'white', fontSize: 36, marginRight: 10 }}>{flag}</Text>
             </View>
@@ -52,6 +56,7 @@ const CurrencySelect = ({ route }: any) => {
               <Text style={{ color: 'white', fontSize: 18 }}>{name}</Text>
             </View>
           </View>
+
           <View>
             <Text style={{ color: 'gray', marginLeft: 'auto', fontWeight: '700' }}>{code}</Text>
           </View>

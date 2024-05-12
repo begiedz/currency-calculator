@@ -15,6 +15,8 @@ interface AppContextProps {
   setOperationNumber: Dispatch<SetStateAction<string>>;
   operation: string;
   setOperation: Dispatch<SetStateAction<string>>;
+  responseRates: object;
+  setResponseRates: Dispatch<SetStateAction<object>>
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined)
@@ -51,6 +53,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
   // operation is set in Numpad
   const [operation, setOperation] = useState<string>('')
 
+  const [responseRates, setResponseRates] = useState<object>({})
+
   return (
     <AppContext.Provider value={{
       rate,
@@ -67,6 +71,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
       setOperationNumber,
       operation,
       setOperation,
+      responseRates,
+      setResponseRates
     }}>
       {children}
     </AppContext.Provider>

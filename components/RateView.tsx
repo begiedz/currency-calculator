@@ -7,7 +7,7 @@ import { callApi, getRate, getDate } from '../api'
 
 const RateView: React.FC = () => {
 
-  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, } = useAppContext();
+  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, responseRates, setResponseRates } = useAppContext();
 
   const [formattedTime, setFormattedTime] = useState<string>('')
   const [formattedDate, setFormattedDate] = useState<string>('')
@@ -15,6 +15,7 @@ const RateView: React.FC = () => {
   const handlePress = async (baseCode: string, targetCode: string) => {
     try {
       const response = await callApi(baseCode)
+      setResponseRates(response.rates)
       const apiRate: number = getRate(response, targetCode)
       const { formattedDate, formattedTime } = getDate(response)
 
