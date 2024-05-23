@@ -3,7 +3,7 @@ import { SafeAreaView, Text, View, FlatList, TouchableHighlight, Platform } from
 import { SearchBar, color } from '@rneui/base'
 
 import { useAppContext } from '../context/AppContext'
-import { supportedCurrencies } from '../data/initialCurrencies'
+import { supportedCurrencies } from '../data/supportedCurrencies'
 import { useNavigation } from '@react-navigation/native'
 import { Styles } from '../styles/Styles'
 
