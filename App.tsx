@@ -1,11 +1,11 @@
-import { AppContextProvider } from './Context';
-import Stack from './components/Stack'
+import { AppContextProvider } from './context/AppContext';
+import CalculatorStack from './navigation/CalculatorStack'
 
 export default function App() {
 
   return (
     <AppContextProvider>
-      <Stack />
+      <CalculatorStack />
     </AppContextProvider>
   )
 };

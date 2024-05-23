@@ -4,10 +4,10 @@ import { StatusBar } from 'expo-status-bar';
 import { useNavigation, NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import Numpad from './Numpad';
-import Display from './Display';
-import RateView from './RateView';
-import CurrencySelect from './CurrencySelect';
+import Numpad from '../components/Numpad';
+import Display from '../components/Display';
+import RateView from '../components/RateView';
+import CurrencySelect from '../components/CurrencySelect';
 import { Styles } from '../styles/Styles';
 
 
@@ -24,7 +24,7 @@ const Calculator = () => {
   )
 }
 
-const Stack = () => {
+const CalculatorStack = () => {
   const Stack = createNativeStackNavigator();
 
   return (
@@ -39,4 +39,4 @@ const Stack = () => {
   )
 }
 
-export default Stack
+export default CalculatorStack

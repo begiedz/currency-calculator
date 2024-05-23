@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { Styles } from '../styles/Styles'
-import { useAppContext } from '../Context'
-import { callApi, getRate, getDate } from '../api'
+import { useAppContext } from '../context/AppContext'
+import { callApi, getRate, getDate } from '../data/api'
 
 
 const RateView: React.FC = () => {
 
-  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, responseRates, setResponseRates } = useAppContext();
+  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, setResponseRates } = useAppContext();
 
   const [formattedTime, setFormattedTime] = useState<string>('')
   const [formattedDate, setFormattedDate] = useState<string>('')

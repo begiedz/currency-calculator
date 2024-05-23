@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { useAppContext } from '../Context';
+import { useAppContext } from '../context/AppContext';
 import Button from './Button';
 import { Styles } from '../styles/Styles'
 
@@ -14,12 +14,6 @@ const Numpad = () => {
     setOperation,
     operationNumber,
     setOperationNumber,
-    targetNumber,
-    setTargetNumber,
-    targetCode,
-    setTargetCode,
-    baseCode,
-    setBaseCode
   } = useAppContext();
 
   const handleNumberPress = (buttonValue: string) => {

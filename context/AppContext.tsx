@@ -17,6 +17,8 @@ interface AppContextProps {
   setOperation: Dispatch<SetStateAction<string>>;
   responseRates: object;
   setResponseRates: Dispatch<SetStateAction<object>>
+  currencies: object;
+  setCurrencies: Dispatch<SetStateAction<Array<Object>>>
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined)
@@ -55,6 +57,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
 
   const [responseRates, setResponseRates] = useState<object>({})
 
+  const [currencies, setCurrencies] = useState<Array<Object>>([])
+
   return (
     <AppContext.Provider value={{
       rate,
@@ -72,7 +76,9 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
       operation,
       setOperation,
       responseRates,
-      setResponseRates
+      setResponseRates,
+      currencies,
+      setCurrencies
     }}>
       {children}
     </AppContext.Provider>

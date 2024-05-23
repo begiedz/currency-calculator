@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
 
-import { useAppContext } from '../Context'
+import { useAppContext } from '../context/AppContext'
 import { Styles } from '../styles/Styles'
 import { Divider } from '@rneui/base'
 

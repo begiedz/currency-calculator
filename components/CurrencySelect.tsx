@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { SafeAreaView, Text, View, FlatList, TouchableHighlight, Platform } from 'react-native'
 import { SearchBar, color } from '@rneui/base'
 
-import { useAppContext } from '../Context'
-import { supportedCurrencies } from '../data/supportedCurrencies'
+import { useAppContext } from '../context/AppContext'
+import { supportedCurrencies } from '../data/initialCurrencies'
 import { useNavigation } from '@react-navigation/native'
 import { Styles } from '../styles/Styles'
 
@@ -11,7 +11,7 @@ const CurrencySelect = ({ route }: any) => {
   const navigation = useNavigation();
   const { changeTargetCode } = route.params
 
-  const { baseCode, targetCode, setBaseCode, setTargetCode, rate, setRate, responseRates } = useAppContext();
+  const { setBaseCode, setTargetCode, setRate, responseRates } = useAppContext();
 
   const [searchCode, setSearchCode] = useState('')
   const [filteredCodes, setFilteredCodes] = useState<ListElementProps[]>(supportedCurrencies)

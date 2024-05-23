@@ -6,21 +6,17 @@ export const callApi = async (baseCode: string) => {
   return json;
 };
 
-export const getRate = (response, targetCode: string) => {
+export const getRate = (response: unknown, targetCode: string) => {
   const rawRate: number = response.rates[targetCode];
-
   // conversion rate rounded to 2 decimal places
   const rate: number = Number.parseFloat(rawRate).toFixed(2);
-  console.log(rate);
   return rate;
 };
 
 export const getDate = (response) => {
   const lastUpdateUnix: number = response.time_last_update_unix;
-
   // transfer Unix seconds to milliseconds
   const date = new Date(lastUpdateUnix * 1000);
-
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
