@@ -10,7 +10,7 @@ const Display = ({ navigation }: any) => {
   const { baseCode, targetCode, baseNumber, targetNumber, setTargetNumber, rate } = useAppContext();
 
   useEffect(() => {
-    setTargetNumber((parseFloat(baseNumber) * rate));
+    setTargetNumber(baseNumber * rate);
   }, [baseNumber, rate])
 
   return (

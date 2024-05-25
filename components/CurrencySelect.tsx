@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView, Text, View, FlatList, TouchableHighlight, Platform } from 'react-native'
-import { SearchBar, color } from '@rneui/base'
+import { SearchBar } from '@rneui/base'
 
 import { useAppContext } from '../context/AppContext'
 import { supportedCurrencies } from '../data/supportedCurrencies'
@@ -40,8 +40,6 @@ const CurrencySelect = ({ route }: any) => {
         onPress={() => {
           changeTargetCode ? setTargetCode(code) : setBaseCode(code);
           changeTargetCode && setRate(parseFloat(responseRates[code]).toFixed(2))
-          console.log(responseRates);
-
           //@ts-ignore
           navigation.navigate('Calculator');
         }}>
@@ -55,6 +53,7 @@ const CurrencySelect = ({ route }: any) => {
             <View>
               <Text style={{ color: 'white', fontSize: 18 }}>{name}</Text>
             </View>
+
           </View>
 
           <View>

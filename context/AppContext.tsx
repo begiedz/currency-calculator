@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, Dispatch, SetStateAction, ReactNode } from 'react'
+import { createContext, useContext, useState, Dispatch, SetStateAction, ReactNode } from 'react'
 
 interface AppContextProps {
   rate: number;
