@@ -22,11 +22,11 @@ const CurrencySelect = ({ route }: any) => {
     flag: string
   }
 
-  const handleSearch = (text: string) => {
-    setSearchCode(text)
+  const handleSearch = (searchText: string) => {
+    setSearchCode(searchText)
     const filteredCurrencies = supportedCurrencies.filter(currency =>
-      currency.name.toLowerCase().includes(text.toLowerCase()) ||
-      currency.code.toLowerCase().includes(text.toLowerCase())
+      currency.name.toLowerCase().includes(searchText.toLowerCase()) ||
+      currency.code.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredCodes(filteredCurrencies)
   }
@@ -39,7 +39,7 @@ const CurrencySelect = ({ route }: any) => {
         style={{ alignItems: 'center', borderRadius: 12 }}
         onPress={() => {
           changeTargetCode ? setTargetCode(code) : setBaseCode(code);
-          changeTargetCode && setRate(parseFloat(responseRates[code]).toFixed(2))
+          changeTargetCode && setRate(responseRates[code].toFixed(2))
           //@ts-ignore
           navigation.navigate('Calculator');
         }}>

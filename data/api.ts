@@ -5,12 +5,12 @@ export const callApi = async (baseCode: string) => {
   return json;
 };
 
-export const getRate = (response: unknown, targetCode: string) => {
-  const rawRate: number = response.rates[targetCode];
-  // conversion rate rounded to 2 decimal places
-  const rate: number = Number.parseFloat(rawRate).toFixed(2);
-  return rate;
-};
+// export const getRate = (response: unknown, targetCode: string) => {
+//   const rawRate: number = response.rates[targetCode];
+//   // conversion rate rounded to 2 decimal places
+//   const rate: number = Number.parseFloat(rawRate).toFixed(2);
+//   return rate;
+// };
 
 export const getDate = (response) => {
   const lastUpdateUnix: number = response.time_last_update_unix;
