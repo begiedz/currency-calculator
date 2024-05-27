@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { Styles } from '../styles/Styles'
 import { useAppContext } from '../context/AppContext'
@@ -7,22 +7,17 @@ import { callApi, getDate } from '../data/api'
 
 const RateView = () => {
 
-  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, setResponseRates, currencies, setCurrencies, responseRates } = useAppContext();
+  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, formattedDate, setFormattedDate, formattedTime, setFormattedTime } = useAppContext();
 
-  const [formattedTime, setFormattedTime] = useState<string>('')
-  const [formattedDate, setFormattedDate] = useState<string>('')
-
-  const handlePress = async (baseCode: string, targetCode: string) => {
+  const fetchData = async (baseCode: string, targetCode: string) => {
     try {
       const response = await callApi(baseCode)
 
-      setResponseRates(response.rates)
-      const { formattedDate, formattedTime } = getDate(response)
-
       setBaseCode(baseCode)
       setTargetCode(targetCode)
-      setRate(responseRates[targetCode].toFixed(2))
+      setRate(response.rates[targetCode])
 
+      const { formattedDate, formattedTime } = getDate(response)
       setFormattedTime(formattedTime)
       setFormattedDate(formattedDate)
     } catch (err: unknown) {
@@ -30,15 +25,20 @@ const RateView = () => {
     }
   };
 
+  useEffect(() => {
+    fetchData(baseCode, targetCode)
+  }, [baseCode])
+
   return (
     <View style={Styles.rateView}>
-      <TouchableOpacity style={Styles.getRate} onPress={() => handlePress(baseCode, targetCode)}>
+      <TouchableOpacity style={Styles.getRate} onPress={() => fetchData
+        (baseCode, targetCode)}>
         <Text style={Styles.getRateButton}>↺</Text>
       </TouchableOpacity>
       {!!rate &&
         <View style={Styles.rate}>
           <Text style={Styles.rateDate}>{formattedDate}, {formattedTime}</Text>
-          <Text style={Styles.rateAmmount}>1 {baseCode} = {rate} {targetCode}</Text>
+          <Text style={Styles.rateAmmount}>1 {baseCode} = {rate.toFixed(2)} {targetCode}</Text>
         </View>
       }
     </View>

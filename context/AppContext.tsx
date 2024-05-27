@@ -15,10 +15,10 @@ interface AppContextProps {
   setOperationNumber: Dispatch<SetStateAction<string>>;
   operation: string;
   setOperation: Dispatch<SetStateAction<string>>;
-  responseRates: object;
-  setResponseRates: Dispatch<SetStateAction<object>>
-  currencies: object;
-  setCurrencies: Dispatch<SetStateAction<Array<Object>>>
+  formattedDate: string;
+  setFormattedDate: Dispatch<SetStateAction<string>>;
+  formattedTime: string;
+  setFormattedTime: Dispatch<SetStateAction<string>>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined)
@@ -55,9 +55,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
   // operation is set in Numpad
   const [operation, setOperation] = useState<string>('')
 
-  const [responseRates, setResponseRates] = useState<object>({})
-
-  const [currencies, setCurrencies] = useState<Array<Object>>([])
+  const [formattedTime, setFormattedTime] = useState<string>('')
+  const [formattedDate, setFormattedDate] = useState<string>('')
 
   return (
     <AppContext.Provider value={{
@@ -75,10 +74,10 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
       setOperationNumber,
       operation,
       setOperation,
-      responseRates,
-      setResponseRates,
-      currencies,
-      setCurrencies
+      formattedDate,
+      setFormattedDate,
+      formattedTime,
+      setFormattedTime,
     }}>
       {children}
     </AppContext.Provider>

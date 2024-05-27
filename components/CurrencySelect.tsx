@@ -31,6 +31,15 @@ const CurrencySelect = ({ route }: any) => {
     setFilteredCodes(filteredCurrencies)
   }
 
+  const handlePress = (code: string) => {
+    if (changeTargetCode) {
+      setTargetCode(code);
+      setRate(responseRates[code]);
+    } else {
+      setBaseCode(code);
+    }
+    navigation.goBack();
+  };
 
   const ListElement = ({ code, name, flag }: ListElementProps) => {
     return (
@@ -38,10 +47,7 @@ const CurrencySelect = ({ route }: any) => {
         underlayColor="#222"
         style={{ alignItems: 'center', borderRadius: 12 }}
         onPress={() => {
-          changeTargetCode ? setTargetCode(code) : setBaseCode(code);
-          changeTargetCode && setRate(responseRates[code].toFixed(2))
-          //@ts-ignore
-          navigation.navigate('Calculator');
+          handlePress(code);
         }}>
         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '95%' }}>
 
@@ -75,9 +81,9 @@ const CurrencySelect = ({ route }: any) => {
         value={searchCode}
 
         placeholder={`Search ${changeTargetCode ? 'target' : 'base'} currency`}
-        platform={Platform.OS === 'ios' || "deafult" ? 'ios' : 'android'}
-        searchIcon={Platform.OS === 'ios' || "deafult" ? { name: 'search' } : { name: 'magnify', type: 'material-community' }}
-        clearIcon={Platform.OS === 'ios' || "deafult" ? { name: 'close-circle' } : { name: 'close-circle', type: 'material-community' }}
+        platform={Platform.OS === 'ios' || "default" ? 'ios' : 'android'}
+        searchIcon={Platform.OS === 'ios' || "default" ? { name: 'search' } : { name: 'magnify', type: 'material-community' }}
+        clearIcon={Platform.OS === 'ios' || "default" ? { name: 'close-circle' } : { name: 'close-circle', type: 'material-community' }}
       />
       <FlatList
         showsVerticalScrollIndicator={true}
