@@ -5,7 +5,7 @@ import { SearchBar } from '@rneui/base'
 import { useAppContext } from '../context/AppContext'
 import { supportedCurrencies } from '../data/supportedCurrencies'
 import { useNavigation } from '@react-navigation/native'
-import { Styles } from '../styles/Styles'
+import { styles } from '../styles/Styles'
 
 const CurrencySelect = ({ route }: any) => {
   const navigation = useNavigation();
@@ -71,7 +71,7 @@ const CurrencySelect = ({ route }: any) => {
     )
   }
   return (
-    <SafeAreaView style={Styles.backGround}>
+    <SafeAreaView style={styles.backGround}>
 
       <SearchBar
         containerStyle={{ backgroundColor: 'transparent', width: '100%' }}

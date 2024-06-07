@@ -1,22 +1,6 @@
 import { StyleSheet } from "react-native";
-export const Styles = StyleSheet.create({
-  header: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    color: 'white',
-  },
 
-  backGround: {
-    height: '100%',
-    width: '100%',
-    maxWidth: 500,
-    backgroundColor: 'black',
-    display: 'flex',
-    alignItems: 'center',
-  },
-
-  //display
+export const displayStyles = StyleSheet.create({
   display: {
     width: '100%',
     gap: 8
@@ -56,25 +40,9 @@ export const Styles = StyleSheet.create({
 
   targetCode: {
     color: 'white'
-  },
-
-  //numpad
-  numpad: {
-    width: "100%",
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 16,
-    margin: 16,
-  },
-
-  row: {
-    maxWidth: '100%',
-    flexDirection: 'row',
-    gap: 16,
-  },
-
-  // buttons
+  }
+})
+export const buttonStyles = StyleSheet.create({
   button: {
     width: 72,
     height: 72,
@@ -110,9 +78,25 @@ export const Styles = StyleSheet.create({
   buttonTextLight: {
     fontSize: 36,
     color: 'white'
+  }
+})
+export const numpadStyles = StyleSheet.create({
+  numpad: {
+    width: "100%",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 16,
+    margin: 16,
   },
 
-  //rate
+  row: {
+    maxWidth: '100%',
+    flexDirection: 'row',
+    gap: 16,
+  }
+})
+export const rateStyles = StyleSheet.create({
   rateView: {
     position: 'relative',
     width: '100%',
@@ -139,5 +123,15 @@ export const Styles = StyleSheet.create({
 
   rateDate: {
     color: 'limegreen'
-  },
+  }
+})
+export const styles = StyleSheet.create({
+  backGround: {
+    height: '100%',
+    width: '100%',
+    maxWidth: 500,
+    backgroundColor: 'black',
+    display: 'flex',
+    alignItems: 'center',
+  }
 });

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { Styles } from '../styles/Styles'
+import { rateStyles } from '../styles/Styles'
 import { useAppContext } from '../context/AppContext'
 import { callApi, getDate } from '../data/api'
 
@@ -30,15 +30,15 @@ const RateView = () => {
   }, [baseCode])
 
   return (
-    <View style={Styles.rateView}>
-      <TouchableOpacity style={Styles.getRate} onPress={() => fetchData
+    <View style={rateStyles.rateView}>
+      <TouchableOpacity style={rateStyles.getRate} onPress={() => fetchData
         (baseCode, targetCode)}>
-        <Text style={Styles.getRateButton}>↺</Text>
+        <Text style={rateStyles.getRateButton}>↺</Text>
       </TouchableOpacity>
       {!!rate &&
-        <View style={Styles.rate}>
-          <Text style={Styles.rateDate}>{formattedDate}, {formattedTime}</Text>
-          <Text style={Styles.rateAmmount}>1 {baseCode} = {rate.toFixed(2)} {targetCode}</Text>
+        <View style={rateStyles.rate}>
+          <Text style={rateStyles.rateDate}>{formattedDate}, {formattedTime}</Text>
+          <Text style={rateStyles.rateAmmount}>1 {baseCode} = {rate.toFixed(2)} {targetCode}</Text>
         </View>
       }
     </View>

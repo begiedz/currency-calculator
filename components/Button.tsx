@@ -1,5 +1,5 @@
 import { TouchableOpacity, Text } from "react-native";
-import { Styles } from "../styles/Styles";
+import { buttonStyles } from "../styles/Styles";
 
 interface ButtonProps {
   title: string;
@@ -14,13 +14,13 @@ export default function Button({ title, onPress, isPrimary, isSecondary, isDarkT
   return (
     <TouchableOpacity style={
       isPrimary ?
-        Styles.buttonPrimary :
+        buttonStyles.buttonPrimary :
         isSecondary ?
-          Styles.buttonSecondary :
-          Styles.button}
+          buttonStyles.buttonSecondary :
+          buttonStyles.button}
       onPress={onPress}>
       <Text style={!isDarkText ?
-        Styles.buttonTextLight : Styles.buttonTextDark}>
+        buttonStyles.buttonTextLight : buttonStyles.buttonTextDark}>
         {title}
       </Text>
     </TouchableOpacity>

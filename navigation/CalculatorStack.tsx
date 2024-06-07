@@ -8,14 +8,14 @@ import Numpad from '../components/Numpad';
 import Display from '../components/Display';
 import RateView from '../components/RateView';
 import CurrencySelect from '../components/CurrencySelect';
-import { Styles } from '../styles/Styles';
+import { styles } from '../styles/Styles';
 
 
 const Calculator = () => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={Styles.backGround}>
+    <SafeAreaView style={styles.backGround}>
       <StatusBar style="light" />
       <Display navigation={navigation} />
       <Numpad />
