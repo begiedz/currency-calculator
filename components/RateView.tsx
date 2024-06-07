@@ -7,7 +7,7 @@ import { callApi, getDate } from '../data/api'
 
 const RateView = () => {
 
-  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, formattedDate, setFormattedDate, formattedTime, setFormattedTime } = useAppContext();
+  const { rate, baseCode, targetCode, setRate, setBaseCode, setTargetCode, formattedDate, setFormattedDate, formattedTime, setFormattedTime, setResponseRates } = useAppContext();
 
   const fetchData = async (baseCode: string, targetCode: string) => {
     try {
@@ -16,11 +16,12 @@ const RateView = () => {
       setBaseCode(baseCode)
       setTargetCode(targetCode)
       setRate(response.rates[targetCode])
+      setResponseRates(response.rates)
 
       const { formattedDate, formattedTime } = getDate(response)
       setFormattedTime(formattedTime)
       setFormattedDate(formattedDate)
-    } catch (err: unknown) {
+    } catch (err) {
       console.error(err);
     }
   };

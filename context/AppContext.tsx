@@ -19,6 +19,8 @@ interface AppContextProps {
   setFormattedDate: Dispatch<SetStateAction<string>>;
   formattedTime: string;
   setFormattedTime: Dispatch<SetStateAction<string>>;
+  responseRates: object;
+  setResponseRates: Dispatch<SetStateAction<object>>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined)
@@ -57,6 +59,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
 
   const [formattedTime, setFormattedTime] = useState<string>('')
   const [formattedDate, setFormattedDate] = useState<string>('')
+  const [responseRates, setResponseRates] = useState<object>({})
 
   return (
     <AppContext.Provider value={{
@@ -78,6 +81,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
       setFormattedDate,
       formattedTime,
       setFormattedTime,
+      responseRates,
+      setResponseRates
     }}>
       {children}
     </AppContext.Provider>
