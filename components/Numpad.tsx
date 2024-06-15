@@ -10,6 +10,8 @@ const Numpad = () => {
   const {
     baseNumber,
     setBaseNumber,
+    targetNumber,
+    setTargetNumber,
     operation,
     setOperation,
     operationNumber,
@@ -39,7 +41,11 @@ const Numpad = () => {
     else
       setBaseNumber(baseNumber.slice(0, -1))
   }
-
+  const handleSwap = (a: string, b: number) => {
+    const temp = a
+    setBaseNumber(b.toString())
+    setTargetNumber(parseFloat(temp))
+  }
   const getResult = () => {
     const result =
       operation === '+' ? parseFloat(operationNumber) + parseFloat(baseNumber) :
@@ -60,7 +66,7 @@ const Numpad = () => {
     <View style={numpadStyles.numpad}>
       <View style={numpadStyles.row}>
         <Button title='C' isSecondary isDarkText onPress={() => handleClear()} />
-        <Button title='⇅' isSecondary isDarkText onPress={() => alert('Implementing functionality')} />
+        <Button title='⇅' isSecondary isDarkText onPress={() => handleSwap(baseNumber, targetNumber)} />
         <Button title='%' isSecondary isDarkText onPress={() => alert('Implementing functionality')} />
         <Button title='÷' isPrimary onPress={() => handleOperation('/')} />
       </View>
