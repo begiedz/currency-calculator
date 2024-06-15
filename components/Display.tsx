@@ -18,10 +18,23 @@ const Display = ({ navigation }: any) => {
 
       <TouchableHighlight underlayColor="#222" style={{ borderRadius: 16, padding: 8 }}
         onPress={() => navigation.navigate('Currencies', { changeTargetCode: false })}
-        onLongPress={() => { }}>
+      // onLongPress={() => { }}
+      >
         <View style={displayStyles.baseNumberWrapper}>
           <Text style={displayStyles.baseCode}>{baseCode == '' ? 'Base Currency' : baseCode}</Text>
-          <Text selectable={true} style={displayStyles.baseNumberDisplay}>{parseFloat(baseNumber).toFixed(2)}</Text>
+
+          <Text
+            adjustsFontSizeToFit={true}
+            numberOfLines={1}
+            selectable={true}
+            style={displayStyles.baseNumberDisplay}>
+
+            {baseNumber === "." ? "0."
+              : baseNumber.includes('.') ? parseFloat(baseNumber).toFixed(2)
+                : baseNumber}
+
+          </Text>
+
         </View>
       </TouchableHighlight>
 
@@ -29,15 +42,23 @@ const Display = ({ navigation }: any) => {
 
       <TouchableHighlight underlayColor="#222" style={{ borderRadius: 16, padding: 8 }}
         onPress={() => navigation.navigate('Currencies', { changeTargetCode: true })}
-        onLongPress={() => { }}>
+      >
 
         <View style={displayStyles.targetNumberWrapper}>
           <Text style={displayStyles.baseCode}>{targetCode == '' ? 'Target Currency' : targetCode}</Text>
-          <Text selectable={true} style={displayStyles.targetNumberDisplay}>{parseFloat(targetNumber).toFixed(2)}</Text>
-        </View>
-      </TouchableHighlight>
 
-    </View>
+          <Text
+            adjustsFontSizeToFit={true}
+            numberOfLines={1}
+            selectable={true}
+            style={displayStyles.targetNumberDisplay}>
+            {baseNumber === "." ? "0." : targetNumber.toString().includes('.') ? targetNumber.toFixed(2) : targetNumber}
+          </Text>
+
+        </View>
+      </TouchableHighlight >
+
+    </View >
   )
 }
 

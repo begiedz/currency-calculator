@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native';
+import { Platform, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation, NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -8,14 +8,14 @@ import Numpad from '../components/Numpad';
 import Display from '../components/Display';
 import RateView from '../components/RateView';
 import CurrencySelect from '../components/CurrencySelect';
-import { styles } from '../styles/Styles';
+import { styles, utilStyles } from '../styles/Styles';
 
 
 const Calculator = () => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={styles.backGround}>
+    <SafeAreaView style={[styles.backGround, utilStyles.androidSafeArea, Platform.OS === 'web' ? styles.webBackGround : null]}>
       <StatusBar style="light" />
       <Display navigation={navigation} />
       <Numpad />
@@ -32,7 +32,8 @@ const CalculatorStack = () => {
       <Stack.Navigator>
         <Stack.Screen name='Calculator'
           component={Calculator}
-          options={{ headerShown: false }} />
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name='Currencies' component={CurrencySelect} />
       </Stack.Navigator>
     </NavigationContainer>

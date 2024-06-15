@@ -74,19 +74,20 @@ const CurrencySelect = ({ route }: any) => {
     <SafeAreaView style={styles.backGround}>
 
       <SearchBar
-        containerStyle={{ backgroundColor: 'transparent', width: '100%' }}
+        containerStyle={{ backgroundColor: 'transparent', width: '100%', paddingTop: 13, paddingBottom: 13 }}
         inputContainerStyle={{ backgroundColor: '#222' }}
         inputStyle={{ color: 'white' }}
         onChangeText={handleSearch}
         value={searchCode}
 
         placeholder={`Search ${changeTargetCode ? 'target' : 'base'} currency`}
-        platform={Platform.OS === 'ios' || "default" ? 'ios' : 'android'}
-        searchIcon={Platform.OS === 'ios' || "default" ? { name: 'search' } : { name: 'magnify', type: 'material-community' }}
-        clearIcon={Platform.OS === 'ios' || "default" ? { name: 'close-circle' } : { name: 'close-circle', type: 'material-community' }}
+        platform={'ios'}
+        searchIcon={Platform.OS === 'ios' ? { name: 'search' } : { name: 'magnify', type: 'material-community' }}
+        clearIcon={Platform.OS === 'ios' ? { name: 'close-circle' } : { name: 'close-circle', type: 'material-community' }}
       />
       <FlatList
         showsVerticalScrollIndicator={true}
+        indicatorStyle='white'
         style={{ width: '100%' }}
         data={filteredCodes}
         renderItem={({ item }) => (

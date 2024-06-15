@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StatusBar, StyleSheet } from "react-native";
 
 export const displayStyles = StyleSheet.create({
   display: {
@@ -125,13 +125,32 @@ export const rateStyles = StyleSheet.create({
     color: 'limegreen'
   }
 })
+export const utilStyles = StyleSheet.create({
+  androidSafeArea: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  }
+})
 export const styles = StyleSheet.create({
   backGround: {
     height: '100%',
     width: '100%',
-    maxWidth: 500,
     backgroundColor: 'black',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
+
+  },
+  webBackGround: {
+    maxWidth: 1080,
+    borderWidth: 1,
+    borderRadius: 16,
+    borderColor: 'gray',
+    overflow: 'scroll'
+  },
+  wrapper: {
+    height: 200,
+    width: 200,
+    display: 'flex',
+    alignItems: 'center'
   }
 });
