@@ -70,6 +70,16 @@ export const buttonStyles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  buttonWide: {
+    width: 160,
+    height: 72,
+    borderRadius: 24,
+    backgroundColor: '#333',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    paddingLeft: 24
+  },
+
   buttonTextDark: {
     fontSize: 36,
     color: 'black'

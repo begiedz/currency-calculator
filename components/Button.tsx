@@ -7,17 +7,17 @@ interface ButtonProps {
   isPrimary?: boolean;
   isSecondary?: boolean;
   isDarkText?: boolean;
+  isWide?: boolean
 }
 
-export default function Button({ title, onPress, isPrimary, isSecondary, isDarkText }: ButtonProps) {
+export default function Button({ title, onPress, isPrimary, isSecondary, isWide, isDarkText }: ButtonProps) {
 
   return (
     <TouchableOpacity style={
-      isPrimary ?
-        buttonStyles.buttonPrimary :
-        isSecondary ?
-          buttonStyles.buttonSecondary :
-          buttonStyles.button}
+      isPrimary ? buttonStyles.buttonPrimary
+        : isSecondary ? buttonStyles.buttonSecondary
+          : isWide ? buttonStyles.buttonWide
+            : buttonStyles.button}
       onPress={onPress}>
       <Text style={!isDarkText ?
         buttonStyles.buttonTextLight : buttonStyles.buttonTextDark}>

@@ -11,7 +11,6 @@ const Numpad = () => {
     baseNumber,
     setBaseNumber,
     targetNumber,
-    setTargetNumber,
     operation,
     setOperation,
     operationNumber,
@@ -22,7 +21,7 @@ const Numpad = () => {
     if (baseNumber === '0') {
       setBaseNumber(buttonValue)
     }
-    else if (baseNumber.length < 10) {
+    else if (baseNumber.length < 12) {
       setBaseNumber(baseNumber + buttonValue)
     }
   }
@@ -48,11 +47,11 @@ const Numpad = () => {
 
   const getResult = () => {
     const result =
-      operation === '+' ? parseFloat(operationNumber) + parseFloat(baseNumber) :
-        operation === '-' ? parseFloat(operationNumber) - parseFloat(baseNumber) :
-          operation === '*' ? parseFloat(operationNumber) * parseFloat(baseNumber) :
-            operation === '/' ? parseFloat(operationNumber) / parseFloat(baseNumber) :
-              operation === '%' ? parseFloat(baseNumber) * 0.01 : 0;
+      operation === '+' ? parseFloat(operationNumber) + parseFloat(baseNumber)
+        : operation === '-' ? parseFloat(operationNumber) - parseFloat(baseNumber)
+          : operation === '*' ? parseFloat(operationNumber) * parseFloat(baseNumber)
+            : operation === '/' ? parseFloat(operationNumber) / parseFloat(baseNumber)
+              : 0;
     setBaseNumber(result.toString());
   };
 
@@ -66,8 +65,8 @@ const Numpad = () => {
     <View style={numpadStyles.numpad}>
       <View style={numpadStyles.row}>
         <Button title='C' isSecondary isDarkText onPress={() => handleClear()} />
+        <Button title='⌫' isSecondary isDarkText onPress={() => handleBackspace()} />
         <Button title='⇅' isSecondary isDarkText onPress={() => handleSwap(targetNumber)} />
-        <Button title='%' isSecondary isDarkText onPress={() => alert('Implementing functionality')} />
         <Button title='÷' isPrimary onPress={() => handleOperation('/')} />
       </View>
 
@@ -93,9 +92,8 @@ const Numpad = () => {
       </View>
 
       <View style={numpadStyles.row}>
-        <Button title='0' onPress={() => handleNumberPress('0')} />
+        <Button title='0' isWide onPress={() => handleNumberPress('0')} />
         <Button title='.' onPress={() => handleNumberPress('.')} />
-        <Button title='⌫' onPress={() => handleBackspace()} />
         <Button title='=' isPrimary onPress={() => getResult()} />
       </View>
     </View>
