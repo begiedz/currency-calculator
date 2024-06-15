@@ -18,7 +18,7 @@ const Display = ({ navigation }: any) => {
 
       <TouchableHighlight underlayColor="#222" style={{ borderRadius: 16, padding: 8 }}
         onPress={() => navigation.navigate('Currencies', { changeTargetCode: false })}
-      // onLongPress={() => { }}
+        onLongPress={() => {/* do nothing to open copy menu */ }}
       >
         <View style={displayStyles.baseNumberWrapper}>
           <Text style={displayStyles.baseCode}>{baseCode == '' ? 'Base Currency' : baseCode}</Text>
@@ -42,6 +42,7 @@ const Display = ({ navigation }: any) => {
 
       <TouchableHighlight underlayColor="#222" style={{ borderRadius: 16, padding: 8 }}
         onPress={() => navigation.navigate('Currencies', { changeTargetCode: true })}
+        onLongPress={() => {/* do nothing to open copy menu */ }}
       >
 
         <View style={displayStyles.targetNumberWrapper}>

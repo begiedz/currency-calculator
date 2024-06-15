@@ -41,8 +41,8 @@ const Numpad = () => {
       setBaseNumber(baseNumber.slice(0, -1))
   }
 
-  const handleSwap = (targetNumber: string) => {
-    setBaseNumber(targetNumber.toString())
+  const handleSwap = (targetNumber: number) => {
+    setBaseNumber(targetNumber.toFixed(2).toString())
   }
 
   const getResult = () => {

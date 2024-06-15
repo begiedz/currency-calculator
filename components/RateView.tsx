@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { rateStyles } from '../styles/Styles'
 import { useAppContext } from '../context/AppContext'
