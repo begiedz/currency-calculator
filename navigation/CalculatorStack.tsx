@@ -15,7 +15,7 @@ const Calculator = () => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={[styles.backGround, utilStyles.androidSafeArea, Platform.OS === 'web' ? styles.webBackGround : null]}>
+    <SafeAreaView style={[styles.background, utilStyles.androidSafeArea, Platform.OS === 'web' ? styles.webBackground : null]}>
       <StatusBar style="light" />
       <Display navigation={navigation} />
       <Numpad />

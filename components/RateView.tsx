@@ -32,8 +32,7 @@ const RateView = () => {
 
   return (
     <View style={rateStyles.rateView}>
-      <TouchableOpacity style={rateStyles.getRate} onPress={() => fetchData
-        (baseCode, targetCode)}>
+      <TouchableOpacity onPress={() => fetchData(baseCode, targetCode)}>
         <Text style={rateStyles.getRateButton}>↺</Text>
       </TouchableOpacity>
       {!!rate &&
@@ -42,6 +41,7 @@ const RateView = () => {
           <Text style={rateStyles.rateAmmount}>1 {baseCode} = {rate.toFixed(2)} {targetCode}</Text>
         </View>
       }
+      <View style={{ width: 32, height: 32 }} />
     </View>
   )
 }
