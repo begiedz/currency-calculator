@@ -20,8 +20,6 @@ const Numpad = () => {
   const windowWidth = Dimensions.get('window').width;
 
   const handleNumberPress = (buttonValue: string) => {
-    console.log(windowWidth);
-
     // if platform is web and is on phone vertical view
     if (Platform.OS === 'web' && windowWidth < 450) {
       if (baseNumber === '0') {

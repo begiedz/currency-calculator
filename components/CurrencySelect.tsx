@@ -71,8 +71,7 @@ const CurrencySelect = ({ route }: any) => {
     )
   }
   return (
-    <SafeAreaView style={styles.backGround}>
-
+    <SafeAreaView>
       <SearchBar
         containerStyle={{ backgroundColor: 'transparent', width: '100%', paddingTop: 13, paddingBottom: 13 }}
         inputContainerStyle={{ backgroundColor: '#222' }}
@@ -88,7 +87,8 @@ const CurrencySelect = ({ route }: any) => {
       <FlatList
         showsVerticalScrollIndicator={true}
         indicatorStyle='white'
-        style={{ width: '100%' }}
+        scrollEnabled={true}
+        style={{ width: '100%', overflow: 'scroll' }}
         data={filteredCodes}
         renderItem={({ item }) => (
           <ListElement code={item.code} name={item.name} flag={item.flag} />)}

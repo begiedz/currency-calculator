@@ -150,9 +150,9 @@ export const styles = StyleSheet.create({
   webBackground: {
     alignSelf: 'center',
     maxWidth: 768,
-    borderWidth: 1,
-    borderRadius: 16,
-    borderColor: 'gray',
+    // borderWidth: 1,
+    // borderRadius: 16,
+    // borderColor: 'gray',
     overflow: 'scroll'
   },
   wrapper: {
