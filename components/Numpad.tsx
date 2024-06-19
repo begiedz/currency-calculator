@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Dimensions, Platform, View } from 'react-native'
 
 import { useAppContext } from '../context/AppContext';
 import Button from './Button';
@@ -17,13 +17,29 @@ const Numpad = () => {
     setOperationNumber,
   } = useAppContext();
 
+  const windowWidth = Dimensions.get('window').width;
+
   const handleNumberPress = (buttonValue: string) => {
-    if (baseNumber === '0') {
-      setBaseNumber(buttonValue)
+    console.log(windowWidth);
+
+    // if platform is web and is on phone vertical view
+    if (Platform.OS === 'web' && windowWidth < 450) {
+      if (baseNumber === '0') {
+        setBaseNumber(buttonValue)
+      } else if (baseNumber.length < 8) {
+        setBaseNumber(baseNumber + buttonValue)
+      }
+
+    } else {
+      if (baseNumber === '0') {
+        setBaseNumber(buttonValue)
+      }
+      else if (baseNumber.length < 12) {
+        setBaseNumber(baseNumber + buttonValue)
+      }
     }
-    else if (baseNumber.length < 12) {
-      setBaseNumber(baseNumber + buttonValue)
-    }
+
+
   }
 
   const handleClear = () => {

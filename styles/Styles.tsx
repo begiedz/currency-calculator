@@ -1,4 +1,4 @@
-import { Platform, StatusBar, StyleSheet, Dimensions } from "react-native";
+import { Platform, StatusBar, StyleSheet } from "react-native";
 
 export const displayStyles = StyleSheet.create({
   display: {
@@ -108,7 +108,7 @@ export const numpadStyles = StyleSheet.create({
 })
 export const rateStyles = StyleSheet.create({
   rateView: {
-    width: Dimensions.get('window').width * 0.9,
+    width: '90%',
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row'
@@ -146,8 +146,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start',
 
   },
+
   webBackground: {
-    maxWidth: 1080,
+    alignSelf: 'center',
+    maxWidth: 768,
     borderWidth: 1,
     borderRadius: 16,
     borderColor: 'gray',
