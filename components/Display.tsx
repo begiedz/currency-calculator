@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
-import { View, Text, TouchableHighlight } from 'react-native'
+import { View, Text, TouchableHighlight, Platform } from 'react-native'
 
 import { useAppContext } from '../context/AppContext'
 import { displayStyles } from '../styles/Styles'
 import { Divider } from '@rneui/base'
+import useVerticalWeb from '../hooks/useVerticalWeb'
 
 const Display = ({ navigation }: any) => {
 
   const { baseCode, targetCode, baseNumber, targetNumber, setTargetNumber, rate } = useAppContext();
+  const isVerticalWeb = useVerticalWeb()
 
   useEffect(() => {
     setTargetNumber(baseNumber * rate);
@@ -20,14 +22,14 @@ const Display = ({ navigation }: any) => {
         onPress={() => navigation.navigate('Currencies', { changeTargetCode: false })}
         onLongPress={() => {/* do nothing to open copy menu */ }}
       >
-        <View style={displayStyles.baseNumberWrapper}>
+        <View style={displayStyles.numberWrapper}>
           <Text style={displayStyles.baseCode}>{baseCode == '' ? 'Base Currency' : baseCode}</Text>
 
           <Text
             adjustsFontSizeToFit={true}
             numberOfLines={1}
             selectable={true}
-            style={displayStyles.baseNumberDisplay}>
+            style={[displayStyles.baseNumberDisplay, isVerticalWeb ? { fontSize: 52, height: 'auto' } : null]}>
 
             {baseNumber === "." ? "0."
               : baseNumber.includes('.') ? parseFloat(baseNumber).toFixed(2)
@@ -45,14 +47,14 @@ const Display = ({ navigation }: any) => {
         onLongPress={() => {/* do nothing to open copy menu */ }}
       >
 
-        <View style={displayStyles.targetNumberWrapper}>
+        <View style={displayStyles.numberWrapper}>
           <Text style={displayStyles.baseCode}>{targetCode == '' ? 'Target Currency' : targetCode}</Text>
 
           <Text
             adjustsFontSizeToFit={true}
             numberOfLines={1}
             selectable={true}
-            style={displayStyles.targetNumberDisplay}>
+            style={[displayStyles.targetNumberDisplay, isVerticalWeb ? { fontSize: 60, height: '100%' } : null]}>
             {baseNumber === "." ? "0." : targetNumber.toString().includes('.') ? targetNumber.toFixed(2) : targetNumber}
           </Text>
 

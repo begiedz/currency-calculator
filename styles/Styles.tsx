@@ -6,7 +6,7 @@ export const displayStyles = StyleSheet.create({
     gap: 8
   },
 
-  baseNumberWrapper: {
+  numberWrapper: {
     paddingLeft: 10,
     paddingRight: 10,
     overflow: 'hidden'
@@ -22,12 +22,6 @@ export const displayStyles = StyleSheet.create({
 
   baseCode: {
     color: 'white'
-  },
-
-  targetNumberWrapper: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    overflow: 'hidden'
   },
 
   targetNumberDisplay: {
@@ -52,36 +46,32 @@ export const buttonStyles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  buttonSmall: {
+    width: 60,
+    height: 60,
+    borderRadius: 20
+  },
+
   buttonPrimary: {
-    width: 72,
-    height: 72,
-    borderRadius: 24,
     backgroundColor: 'orange',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 
   buttonSecondary: {
-    width: 72,
-    height: 72,
-    borderRadius: 24,
     backgroundColor: 'darkgray',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 
   buttonWide: {
     width: 160,
-    height: 72,
-    borderRadius: 24,
-    backgroundColor: '#333',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    paddingLeft: 24
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+
+  buttonWideSmall: {
+    width: 128
   },
 
   buttonTextDark: {
-    fontSize: 36,
     color: 'black'
   },
 
@@ -92,14 +82,12 @@ export const buttonStyles = StyleSheet.create({
 })
 export const numpadStyles = StyleSheet.create({
   numpad: {
-    width: "100%",
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 16,
     margin: 16,
   },
-
   row: {
     maxWidth: '100%',
     flexDirection: 'row',
@@ -141,18 +129,14 @@ export const styles = StyleSheet.create({
   background: {
     height: '100%',
     width: '100%',
-    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-
+    justifyContent: 'space-around'
   },
 
   webBackground: {
     alignSelf: 'center',
+    justifyContent: 'flex-start',
     maxWidth: 768,
-    // borderWidth: 1,
-    // borderRadius: 16,
-    // borderColor: 'gray',
     overflow: 'scroll'
   },
   wrapper: {

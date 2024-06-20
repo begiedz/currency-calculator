@@ -4,6 +4,7 @@ import { Dimensions, Platform, View } from 'react-native'
 import { useAppContext } from '../context/AppContext';
 import Button from './Button';
 import { numpadStyles } from '../styles/Styles'
+import useVerticalWeb from '../hooks/useVerticalWeb';
 
 const Numpad = () => {
 
@@ -17,11 +18,11 @@ const Numpad = () => {
     setOperationNumber,
   } = useAppContext();
 
-  const windowWidth = Dimensions.get('window').width;
+  const isVerticalWeb = useVerticalWeb()
 
   const handleNumberPress = (buttonValue: string) => {
     // if platform is web and is on phone vertical view
-    if (Platform.OS === 'web' && windowWidth < 450) {
+    if (isVerticalWeb) {
       if (baseNumber === '0') {
         setBaseNumber(buttonValue)
       } else if (baseNumber.length < 8) {
@@ -76,36 +77,36 @@ const Numpad = () => {
   }
 
   return (
-    <View style={numpadStyles.numpad}>
-      <View style={numpadStyles.row}>
+    <View style={[numpadStyles.numpad, isVerticalWeb ? { gap: 8 } : null]}>
+      <View style={[numpadStyles.row, isVerticalWeb ? { gap: 8 } : null]}>
         <Button title='C' isSecondary isDarkText onPress={() => handleClear()} />
         <Button title='⌫' isSecondary isDarkText onPress={() => handleBackspace()} />
         <Button title='⇅' isSecondary isDarkText onPress={() => handleSwap(targetNumber)} />
         <Button title='÷' isPrimary onPress={() => handleOperation('/')} />
       </View>
 
-      <View style={numpadStyles.row}>
+      <View style={[numpadStyles.row, isVerticalWeb ? { gap: 8 } : null]}>
         <Button title='7' onPress={() => handleNumberPress('7')} />
         <Button title='8' onPress={() => handleNumberPress('8')} />
         <Button title='9' onPress={() => handleNumberPress('9')} />
         <Button title='×' isPrimary onPress={() => handleOperation('*')} />
       </View>
 
-      <View style={numpadStyles.row}>
+      <View style={[numpadStyles.row, isVerticalWeb ? { gap: 8 } : null]}>
         <Button title='4' onPress={() => handleNumberPress('4')} />
         <Button title='5' onPress={() => handleNumberPress('5')} />
         <Button title='6' onPress={() => handleNumberPress('6')} />
         <Button title='-' isPrimary onPress={() => handleOperation('-')} />
       </View>
 
-      <View style={numpadStyles.row}>
+      <View style={[numpadStyles.row, isVerticalWeb ? { gap: 8 } : null]}>
         <Button title='1' onPress={() => handleNumberPress('1')} />
         <Button title='2' onPress={() => handleNumberPress('2')} />
         <Button title='3' onPress={() => handleNumberPress('3')} />
         <Button title='+' isPrimary onPress={() => handleOperation('+')} />
       </View>
 
-      <View style={numpadStyles.row}>
+      <View style={[numpadStyles.row, isVerticalWeb ? { gap: 8 } : null]}>
         <Button title='0' isWide onPress={() => handleNumberPress('0')} />
         <Button title='.' onPress={() => handleNumberPress('.')} />
         <Button title='=' isPrimary onPress={() => getResult()} />

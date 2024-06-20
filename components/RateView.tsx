@@ -26,9 +26,9 @@ const RateView = () => {
     }
   };
 
-  useEffect(() => {
-    fetchData(baseCode, targetCode)
-  }, [baseCode])
+  // useEffect(() => {
+  //   fetchData(baseCode, targetCode)
+  // }, [baseCode])
 
   return (
     <View style={rateStyles.rateView}>

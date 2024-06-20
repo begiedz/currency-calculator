@@ -9,10 +9,11 @@ import Display from '../components/Display';
 import RateView from '../components/RateView';
 import CurrencySelect from '../components/CurrencySelect';
 import { styles, utilStyles } from '../styles/Styles';
-
+import useVerticalWeb from '../hooks/useVerticalWeb';
 
 const Calculator = () => {
   const navigation = useNavigation();
+  const isVerticalWeb = useVerticalWeb()
   return (
     <SafeAreaView style={[
       styles.background, utilStyles.androidSafeArea,
