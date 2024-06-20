@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dimensions, Platform, View } from 'react-native'
+import { View } from 'react-native'
 
 import { useAppContext } from '../context/AppContext';
 import Button from './Button';

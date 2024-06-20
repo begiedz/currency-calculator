@@ -5,7 +5,6 @@ import { SearchBar } from '@rneui/base'
 import { useAppContext } from '../context/AppContext'
 import { supportedCurrencies } from '../data/supportedCurrencies'
 import { useNavigation } from '@react-navigation/native'
-import { styles } from '../styles/Styles'
 
 const CurrencySelect = ({ route }: any) => {
   const navigation = useNavigation();

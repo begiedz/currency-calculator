@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text, Platform, View } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
 import { buttonStyles } from "../styles/Styles";
 import useVerticalWeb from "../hooks/useVerticalWeb";
 

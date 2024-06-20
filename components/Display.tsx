@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Text, TouchableHighlight, Platform } from 'react-native'
+import { View, Text, TouchableHighlight } from 'react-native'
 
 import { useAppContext } from '../context/AppContext'
 import { displayStyles } from '../styles/Styles'
