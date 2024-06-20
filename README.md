@@ -41,6 +41,7 @@ This is a React Native application for converting currencies. It features a calc
 
 ## Project Structure
 
+```plaintext
 .
 ├── App.tsx
 ├── components
@@ -61,6 +62,7 @@ This is a React Native application for converting currencies. It features a calc
 ├── styles
 │ └── Styles.tsx
 └── README.md
+```
 
 ## Usage
 
