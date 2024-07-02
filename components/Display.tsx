@@ -29,7 +29,7 @@ const Display = ({ navigation }: any) => {
             adjustsFontSizeToFit={true}
             numberOfLines={1}
             selectable={true}
-            style={[displayStyles.baseNumberDisplay, isVerticalWeb ? { fontSize: 52, height: 'auto' } : null]}>
+            style={[displayStyles.baseNumberDisplay, isVerticalWeb ? { fontSize: 52, height: 64 } : null]}>
 
             {baseNumber === "." ? "0."
               : baseNumber.includes('.') ? parseFloat(baseNumber).toFixed(2)
@@ -54,7 +54,7 @@ const Display = ({ navigation }: any) => {
             adjustsFontSizeToFit={true}
             numberOfLines={1}
             selectable={true}
-            style={[displayStyles.targetNumberDisplay, isVerticalWeb ? { fontSize: 60, height: '100%' } : null]}>
+            style={[displayStyles.targetNumberDisplay, isVerticalWeb ? { fontSize: 52, height: 64 } : null]}>
             {baseNumber === "." ? "0." : targetNumber.toString().includes('.') ? targetNumber.toFixed(2) : targetNumber}
           </Text>
 
