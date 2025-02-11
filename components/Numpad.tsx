@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 
 import { useAppContext } from '../context/AppContext';
@@ -20,60 +20,69 @@ const Numpad = () => {
 
   const isVerticalWeb = useVerticalWeb()
 
-  const handleNumberPress = (buttonValue: string) => {
+  useEffect(() => {
+    setBaseNumber(parseFloat(displayNumber))
+    return () => {
+    }
+  }, [displayNumber])
+
+
+  const handleNumberPress = (buttonValue: number) => {
     // if platform is web and is on phone vertical view
     if (isVerticalWeb) {
-      if (baseNumber === '0') {
+      if (baseNumber === 0) {
         setBaseNumber(buttonValue)
-      } else if (baseNumber.length < 8) {
+      } else if (baseNumber.toString.length < 8) {
         setBaseNumber(baseNumber + buttonValue)
       }
 
     } else {
-      if (baseNumber === '0') {
+      if (baseNumber === 0) {
         setBaseNumber(buttonValue)
       }
-      else if (baseNumber.length < 12) {
+      else if (baseNumber.toString.length < 12) {
         setBaseNumber(baseNumber + buttonValue)
       }
     }
+  }
 
-
+  const handleDotPress = () => {
+    setBaseNumber(parseFloat(baseNumber.toFixed(1)))
   }
 
   const handleClear = () => {
-    setBaseNumber('0');
+    setBaseNumber(0);
   }
 
   const handleBackspace = () => {
-    if (baseNumber === '0') {
+    if (baseNumber === 0) {
       //do nothing
     }
-    else if (baseNumber.length < 2) {
-      setBaseNumber('0')
+    else if (baseNumber.toString.length < 2) {
+      setBaseNumber(0)
     }
     else
-      setBaseNumber(baseNumber.slice(0, -1))
+      setBaseNumber(parseFloat(baseNumber.toString().slice(0, -1)))
   }
 
   const handleSwap = (targetNumber: number) => {
-    setBaseNumber(targetNumber.toFixed(2).toString())
+    setBaseNumber(parseFloat(targetNumber.toFixed(2)))
   }
 
   const getResult = () => {
     const result =
-      operation === '+' ? parseFloat(operationNumber) + parseFloat(baseNumber)
-        : operation === '-' ? parseFloat(operationNumber) - parseFloat(baseNumber)
-          : operation === '*' ? parseFloat(operationNumber) * parseFloat(baseNumber)
-            : operation === '/' ? parseFloat(operationNumber) / parseFloat(baseNumber)
+      operation === '+' ? operationNumber + baseNumber
+        : operation === '-' ? operationNumber - baseNumber
+          : operation === '*' ? operationNumber * baseNumber
+            : operation === '/' ? operationNumber / baseNumber
               : 0;
-    setBaseNumber(result.toString());
+    setBaseNumber(parseFloat(result.toFixed(2)));
   };
 
   const handleOperation = (buttonValue: string) => {
     setOperation(buttonValue)
     setOperationNumber(baseNumber)
-    setBaseNumber('')
+    setBaseNumber(0)
   }
 
   return (
@@ -86,29 +95,29 @@ const Numpad = () => {
       </View>
 
       <View style={[numpadStyles.row, isVerticalWeb ? { gap: 8 } : null]}>
-        <Button title='7' onPress={() => handleNumberPress('7')} />
-        <Button title='8' onPress={() => handleNumberPress('8')} />
-        <Button title='9' onPress={() => handleNumberPress('9')} />
+        <Button title='7' onPress={() => handleNumberPress(7)} />
+        <Button title='8' onPress={() => handleNumberPress(8)} />
+        <Button title='9' onPress={() => handleNumberPress(9)} />
         <Button title='×' isPrimary onPress={() => handleOperation('*')} />
       </View>
 
       <View style={[numpadStyles.row, isVerticalWeb ? { gap: 8 } : null]}>
-        <Button title='4' onPress={() => handleNumberPress('4')} />
-        <Button title='5' onPress={() => handleNumberPress('5')} />
-        <Button title='6' onPress={() => handleNumberPress('6')} />
+        <Button title='4' onPress={() => handleNumberPress(4)} />
+        <Button title='5' onPress={() => handleNumberPress(5)} />
+        <Button title='6' onPress={() => handleNumberPress(6)} />
         <Button title='-' isPrimary onPress={() => handleOperation('-')} />
       </View>
 
       <View style={[numpadStyles.row, isVerticalWeb ? { gap: 8 } : null]}>
-        <Button title='1' onPress={() => handleNumberPress('1')} />
-        <Button title='2' onPress={() => handleNumberPress('2')} />
-        <Button title='3' onPress={() => handleNumberPress('3')} />
+        <Button title='1' onPress={() => handleNumberPress(1)} />
+        <Button title='2' onPress={() => handleNumberPress(2)} />
+        <Button title='3' onPress={() => handleNumberPress(3)} />
         <Button title='+' isPrimary onPress={() => handleOperation('+')} />
       </View>
 
       <View style={[numpadStyles.row, isVerticalWeb ? { gap: 8 } : null]}>
-        <Button title='0' isWide onPress={() => handleNumberPress('0')} />
-        <Button title='.' onPress={() => handleNumberPress('.')} />
+        <Button title='0' isWide onPress={() => handleNumberPress(0)} />
+        <Button title='.' onPress={() => handleDotPress()} />
         <Button title='=' isPrimary onPress={() => getResult()} />
       </View>
     </View>

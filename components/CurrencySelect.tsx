@@ -6,7 +6,11 @@ import { useAppContext } from '../context/AppContext'
 import { supportedCurrencies } from '../data/supportedCurrencies'
 import { useNavigation } from '@react-navigation/native'
 
-const CurrencySelect = ({ route }: any) => {
+type RouteParams = {
+  changeTargetCode: boolean;
+};
+
+const CurrencySelect = ({ route }: { route: { params: RouteParams } }) => {
   const navigation = useNavigation();
   const { changeTargetCode } = route.params
 
@@ -15,11 +19,6 @@ const CurrencySelect = ({ route }: any) => {
   const [searchCode, setSearchCode] = useState('')
   const [filteredCodes, setFilteredCodes] = useState<ListElementProps[]>(supportedCurrencies)
 
-  interface ListElementProps {
-    code: string
-    name: string
-    flag: string
-  }
 
   const handleSearch = (searchText: string) => {
     setSearchCode(searchText)
@@ -33,7 +32,7 @@ const CurrencySelect = ({ route }: any) => {
   const handlePress = (code: string) => {
     if (changeTargetCode) {
       setTargetCode(code);
-      setRate(responseRates[code]);
+      setRate(responseRates![code]);
     } else {
       setBaseCode(code);
     }

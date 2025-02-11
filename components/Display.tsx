@@ -5,15 +5,17 @@ import { useAppContext } from '../context/AppContext'
 import { displayStyles } from '../styles/Styles'
 import { Divider } from '@rneui/base'
 import useVerticalWeb from '../hooks/useVerticalWeb'
+import { useNavigation, NavigationProp } from '@react-navigation/native'
 
-const Display = ({ navigation }: any) => {
-
+const Display = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList, 'Currencies'>>();
   const { baseCode, targetCode, baseNumber, targetNumber, setTargetNumber, rate } = useAppContext();
   const isVerticalWeb = useVerticalWeb()
 
   useEffect(() => {
     setTargetNumber(baseNumber * rate);
   }, [baseNumber, rate])
+
 
   return (
     <View style={displayStyles.display} >
@@ -31,9 +33,7 @@ const Display = ({ navigation }: any) => {
             selectable={true}
             style={[displayStyles.baseNumberDisplay, isVerticalWeb ? { fontSize: 52, height: 64 } : null]}>
 
-            {baseNumber === "." ? "0."
-              : baseNumber.includes('.') ? parseFloat(baseNumber).toFixed(2)
-                : baseNumber}
+            {baseNumber.toString().includes('.') ? baseNumber.toFixed(2) : baseNumber}
 
           </Text>
 
@@ -55,7 +55,7 @@ const Display = ({ navigation }: any) => {
             numberOfLines={1}
             selectable={true}
             style={[displayStyles.targetNumberDisplay, isVerticalWeb ? { fontSize: 52, height: 64 } : null]}>
-            {baseNumber === "." ? "0." : targetNumber.toString().includes('.') ? targetNumber.toFixed(2) : targetNumber}
+            {targetNumber.toString().includes('.') ? targetNumber.toFixed(2) : targetNumber}
           </Text>
 
         </View>

@@ -7,32 +7,29 @@ interface AppContextProps {
   setBaseCode: Dispatch<SetStateAction<string>>;
   targetCode: string;
   setTargetCode: Dispatch<SetStateAction<string>>;
-  baseNumber: string;
-  setBaseNumber: Dispatch<SetStateAction<string>>;
-  targetNumber: string;
-  setTargetNumber: Dispatch<SetStateAction<string>>;
-  operationNumber: string;
-  setOperationNumber: Dispatch<SetStateAction<string>>;
+  baseNumber: number;
+  setBaseNumber: Dispatch<SetStateAction<number>>;
+  targetNumber: number;
+  setTargetNumber: Dispatch<SetStateAction<number>>;
+  operationNumber: number;
+  setOperationNumber: Dispatch<SetStateAction<number>>;
   operation: string;
   setOperation: Dispatch<SetStateAction<string>>;
   formattedDate: string;
   setFormattedDate: Dispatch<SetStateAction<string>>;
   formattedTime: string;
   setFormattedTime: Dispatch<SetStateAction<string>>;
-  responseRates: object;
-  setResponseRates: Dispatch<SetStateAction<object>>;
+  responseRates: Rate | undefined;
+  setResponseRates: Dispatch<SetStateAction<Rate | undefined>>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined)
 
-export const useAppContext = (): any => {
-
+export const useAppContext = (): AppContextProps => {
   const context = useContext(AppContext)
-
   if (!context) {
-    return undefined;
+    throw new Error("useAppContext must be used within an AppContextProvider")
   }
-
   return context
 }
 
@@ -41,7 +38,6 @@ interface AppContextProviderProps {
 }
 
 export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children }) => {
-
   //rate is returned from exchange rate api
   const [rate, setRate] = useState<number>(0)
 
@@ -49,17 +45,18 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
   const [targetCode, setTargetCode] = useState<string>('PLN')
 
   // baseNumber is set in Numpad and directed to Display Component
-  const [baseNumber, setBaseNumber] = useState<string>('0')
-  const [targetNumber, setTargetNumber] = useState<string>('0')
+  const [baseNumber, setBaseNumber] = useState<number>(0)
+  const [displayNumber, setDisplayNumber] = useState<string>('0')
+  const [targetNumber, setTargetNumber] = useState<number>(0)
 
-  const [operationNumber, setOperationNumber] = useState<string>('0')
+  const [operationNumber, setOperationNumber] = useState<number>(0)
 
   // operation is set in Numpad
   const [operation, setOperation] = useState<string>('')
 
   const [formattedTime, setFormattedTime] = useState<string>('')
   const [formattedDate, setFormattedDate] = useState<string>('')
-  const [responseRates, setResponseRates] = useState<object>({})
+  const [responseRates, setResponseRates] = useState<Rate | undefined>(undefined)
 
   return (
     <AppContext.Provider value={{

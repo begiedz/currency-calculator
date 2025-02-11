@@ -11,13 +11,12 @@ import CurrencySelect from '../components/CurrencySelect';
 import { styles, utilStyles } from '../styles/Styles';
 
 const Calculator = () => {
-  const navigation = useNavigation();
   return (
     <SafeAreaView style={[
       styles.background, utilStyles.androidSafeArea,
       Platform.OS === 'web' ? styles.webBackground : null]}>
       <StatusBar style="light" />
-      <Display navigation={navigation} />
+      <Display />
       <Numpad />
       <RateView />
     </SafeAreaView>
@@ -25,16 +24,19 @@ const Calculator = () => {
 }
 
 const CalculatorStack = () => {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
     <NavigationContainer theme={DarkTheme}>
       <Stack.Navigator>
-        <Stack.Screen name='Calculator'
+        <Stack.Screen
+          name='Calculator'
           component={Calculator}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name='Currencies' component={CurrencySelect} />
+        <Stack.Screen
+          name='Currencies'
+          component={CurrencySelect} />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -28,7 +28,7 @@ export default function Button({ title, onPress, isPrimary, isSecondary, isWide,
         isDarkText ? buttonStyles.buttonTextDark : null]}>
         {title}
       </Text>
-      {isWide && <View style={{ width: 32, height: 32 }}></View>}
+      {isWide && <View style={{ width: 32, height: 32 }} />}
     </TouchableOpacity>
   )
 

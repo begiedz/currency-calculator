@@ -1,12 +1,12 @@
-// @ts-nocheck
 export const callApi = async (baseCode: string) => {
   const response = await fetch(`https://open.er-api.com/v6/latest/${baseCode}`);
   const json = await response.json();
   console.log('api called');
+  console.log(json);
   return json;
 };
 
-export const getDate = (response) => {
+export const getDate = (response: ApiResponse) => {
   const lastUpdateUnix: number = response.time_last_update_unix;
   // transfer Unix seconds to milliseconds
   const date = new Date(lastUpdateUnix * 1000);
